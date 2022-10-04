@@ -6,71 +6,42 @@ namespace Madicine.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
-        private float speed = 5f;
+        private float _speed = 5f;
         [SerializeField]
-        private Transform model;
+        private Transform transformModel;
 
-        private Rigidbody myRigidbody;
-
-        private UserInput _userInput = new UserInput();
+        private UserInput _userInput;
+        private Vector3 _input;
+        private CharacterController controller;
 
         private void Start()
         {
-            myRigidbody = GetComponent<Rigidbody>();
-            _userInput.PlayerMove.Enable();
+            _userInput = new UserInput();
+            controller = GetComponent<CharacterController>();
         }
-
+        
         private void Update()
         {
-            _userInput.PlayerMove.Move.performed += (ctx) => MoveTo(ctx.ReadValue<Vector3>());
-            /*   
-            if (Input.GetKey(KeyCode.W))
-            {
-                MoveTo(Vector3.forward);
-            }
-            else if (Input.GetKeyUp(KeyCode.W))
-            {
-                MoveTo(Vector3.zero);
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                MoveTo(Vector3.back);
-            }
-            else if (Input.GetKeyUp(KeyCode.S))
-            {
-                MoveTo(Vector3.zero);
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                MoveTo(Vector3.left);
-            }
-            else if (Input.GetKeyUp(KeyCode.A))
-            {
-                MoveTo(Vector3.zero);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                MoveTo(Vector3.right);
-            }
-            else if (Input.GetKeyUp(KeyCode.D))
-            {
-                MoveTo(Vector3.zero);
-            }
-            */
+            _userInput.PlayerMove.Enable();
+            _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
+            Debug.Log($"input vectore : {_input}");
+            FaceTo(_input); 
+            MoveTo(_input);
         }
 
         private void MoveTo(Vector3 vector)
         {
-            if (vector == Vector3.forward) { FaceTo(0); }
-            if (vector == Vector3.right) { FaceTo(90); }
-            if (vector == Vector3.back) { FaceTo(180); }
-            if (vector == Vector3.left) { FaceTo(270); }
-            myRigidbody.velocity = vector * speed;
+            controller.Move( vector * _speed * Time.deltaTime);
         }
 
-        private void FaceTo(float degree)
+        private void FaceTo( Vector3 vector)
         {
-            model.rotation = Quaternion.Euler(0, degree, 0);
+            if (vector != Vector3.zero){
+                var relative = (transformModel.position + vector) - transformModel.position;
+                var rot = Quaternion.LookRotation(relative, Vector3.up);
+                Debug.Log($"Face to vector : {rot}");
+                transformModel.rotation = rot;
+            }
         }
     }
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Madicine.Movement
+namespace Madicine.Player
 {
-    public class Mover : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField]
         private float speed = 5f;
@@ -12,13 +12,18 @@ namespace Madicine.Movement
 
         private Rigidbody myRigidbody;
 
+        private UserInput _userInput = new UserInput();
+
         private void Start()
         {
             myRigidbody = GetComponent<Rigidbody>();
+            _userInput.PlayerMove.Enable();
         }
 
         private void Update()
         {
+            _userInput.PlayerMove.Move.performed += (ctx) => MoveTo(ctx.ReadValue<Vector3>());
+            /*   
             if (Input.GetKey(KeyCode.W))
             {
                 MoveTo(Vector3.forward);
@@ -51,6 +56,7 @@ namespace Madicine.Movement
             {
                 MoveTo(Vector3.zero);
             }
+            */
         }
 
         private void MoveTo(Vector3 vector)

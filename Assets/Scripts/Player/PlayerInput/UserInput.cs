@@ -39,7 +39,7 @@ namespace Madicine.Player
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""attact"",
+                    ""name"": ""Attact"",
                     ""type"": ""Button"",
                     ""id"": ""6f85f503-8952-4b8a-8a8a-f17dfa551b53"",
                     ""expectedControlType"": ""Button"",
@@ -111,7 +111,7 @@ namespace Madicine.Player
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""move"",
-                    ""action"": ""attact"",
+                    ""action"": ""Attact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -140,7 +140,7 @@ namespace Madicine.Player
             // PlayerMove
             m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
             m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
-            m_PlayerMove_attact = m_PlayerMove.FindAction("attact", throwIfNotFound: true);
+            m_PlayerMove_Attact = m_PlayerMove.FindAction("Attact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -201,13 +201,13 @@ namespace Madicine.Player
         private readonly InputActionMap m_PlayerMove;
         private IPlayerMoveActions m_PlayerMoveActionsCallbackInterface;
         private readonly InputAction m_PlayerMove_Move;
-        private readonly InputAction m_PlayerMove_attact;
+        private readonly InputAction m_PlayerMove_Attact;
         public struct PlayerMoveActions
         {
             private @UserInput m_Wrapper;
             public PlayerMoveActions(@UserInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_PlayerMove_Move;
-            public InputAction @attact => m_Wrapper.m_PlayerMove_attact;
+            public InputAction @Attact => m_Wrapper.m_PlayerMove_Attact;
             public InputActionMap Get() { return m_Wrapper.m_PlayerMove; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -220,9 +220,9 @@ namespace Madicine.Player
                     @Move.started -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnMove;
-                    @attact.started -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
-                    @attact.performed -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
-                    @attact.canceled -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
+                    @Attact.started -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
+                    @Attact.performed -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
+                    @Attact.canceled -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
                 }
                 m_Wrapper.m_PlayerMoveActionsCallbackInterface = instance;
                 if (instance != null)
@@ -230,9 +230,9 @@ namespace Madicine.Player
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
-                    @attact.started += instance.OnAttact;
-                    @attact.performed += instance.OnAttact;
-                    @attact.canceled += instance.OnAttact;
+                    @Attact.started += instance.OnAttact;
+                    @Attact.performed += instance.OnAttact;
+                    @Attact.canceled += instance.OnAttact;
                 }
             }
         }

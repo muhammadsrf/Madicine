@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "attact",
+                    "name": "Attact",
                     "type": "Button",
                     "id": "6f85f503-8952-4b8a-8a8a-f17dfa551b53",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "move",
-                    "action": "attact",
+                    "action": "Attact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

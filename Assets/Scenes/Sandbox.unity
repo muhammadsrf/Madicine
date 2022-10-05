@@ -608,9 +608,9 @@ GameObject:
   - component: {fileID: 1562320951}
   - component: {fileID: 1562320950}
   - component: {fileID: 1562320949}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Layer: 3
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,4 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  transformModel: {fileID: 2025459027}
+  _transformModel: {fileID: 2025459027}
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 8

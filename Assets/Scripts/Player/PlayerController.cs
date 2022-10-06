@@ -11,7 +11,7 @@ namespace Madicine.Player
         [SerializeField] private LayerMask _groundMask;
 
         private Camera _mainCamera;
-
+        private PlayerModel _model;
         private UserInput _userInput;
         private Vector3 _input;
         private CharacterController controller;
@@ -20,6 +20,7 @@ namespace Madicine.Player
         {
             _userInput = new UserInput();
             controller = GetComponent<CharacterController>();
+            _model = GetComponent<PlayerModel>();
             _mainCamera = Camera.main;
         }
         

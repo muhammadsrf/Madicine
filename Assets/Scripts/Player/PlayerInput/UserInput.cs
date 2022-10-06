@@ -40,12 +40,12 @@ namespace Madicine.Player
                 },
                 {
                     ""name"": ""Attact"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""6f85f503-8952-4b8a-8a8a-f17dfa551b53"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [

@@ -566,7 +566,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d338c3202d47a3a44b85e9bdaab31f51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 2025459024}
   - component: {fileID: 2025459023}
   - component: {fileID: 2025459028}
+  - component: {fileID: 2025459029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -833,7 +834,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025459022}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -858,7 +859,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d338c3202d47a3a44b85e9bdaab31f51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -921,3 +922,20 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &2025459029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025459022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e514d2be2fd3c3acb32a0a63373809f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameCharcter: Docter1
+  health: 50
+  level: 0
+  weapon: {fileID: 11400000, guid: e7053c962df5c850895a42316367e1cb, type: 2}
+  skin: {fileID: 0}

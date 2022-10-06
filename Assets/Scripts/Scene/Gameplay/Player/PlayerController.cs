@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-namespace Madicine.Player
+namespace Madicine.Scene.Gampalay.Players
 {
     public class PlayerController : MonoBehaviour
     {

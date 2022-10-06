@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace Madicine.Player
+namespace Madicine.Scene.Gampalay.Players
 {
     public partial class @UserInput : IInputActionCollection2, IDisposable
     {

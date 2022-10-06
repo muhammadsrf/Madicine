@@ -42,13 +42,5 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-  "scopedRegistries": [
-    {
-      "name": "mimo",
-      "url": "https://assetstore.unity.com/packages/3d/characters/jammo-character-mix-and-jam-158456",
-      "scopes": [
-        "My Assets"
-      ]
-    }
-  ]
+  "scopedRegistries": []
 }

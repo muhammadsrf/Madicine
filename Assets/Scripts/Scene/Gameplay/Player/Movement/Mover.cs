@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Madicine.Movement
+namespace Madicine.Scene.Gameplay.Player
 {
     public class Mover : MonoBehaviour
     {

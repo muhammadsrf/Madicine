@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 890ff488a6cf45eea9b1341cba797e86, type: 3}
+  m_Name: Hazmat
+  m_EditorClassIdentifier: 
+  nameCharcter: Hazmat
+  health: 0
+  level: 0
+  weapon: {fileID: 11400000, guid: 6edcf584a7653f3a9b349a87d6c5f737, type: 2}
+  skin: {fileID: 919132149155446097, guid: f037f2ee4e8d3715d873c5caef7243fd, type: 3}

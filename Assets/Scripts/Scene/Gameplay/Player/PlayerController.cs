@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Madicine.Scene.Gampalay.Weapons;
 
 namespace Madicine.Scene.Gampalay.Players
 {
@@ -9,17 +10,19 @@ namespace Madicine.Scene.Gampalay.Players
         [SerializeField] private float _speed = 5f;
         [SerializeField] private Transform _transformModel;
         [SerializeField] private LayerMask _groundMask;
+        [SerializeField] private GameObject _nozelWeapon;
 
         private Camera _mainCamera;
         private PlayerModel _model;
         private UserInput _userInput;
         private Vector3 _input;
-        private CharacterController controller;
+        private CharacterController _controller;
+        private BaseWeapon _weapons;
 
         private void Start()
         {
             _userInput = new UserInput();
-            controller = GetComponent<CharacterController>();
+            _controller = GetComponent<CharacterController>();
             _model = GetComponent<PlayerModel>();
             _mainCamera = Camera.main;
         }
@@ -37,7 +40,7 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void MoveTo(Vector3 vector)
         {
-            controller.Move( vector * _speed * Time.deltaTime);
+            _controller.Move( vector * _speed * Time.deltaTime);
         }
 
         private void FaceTo( Vector3 vector)
@@ -78,6 +81,7 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void Shoot(){
             Debug.Log("sprayyy wryyyyyy.....");
+            GameObject obj = Instantiate(_weapons.GetComponet<GameObject>(), _nozelWeapon.transform);
         }
     }
 }

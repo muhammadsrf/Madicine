@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Madicine.Scene.Gameplay
+namespace Madicine.Scene.Gampalay
 {
     public class GameplayScene : MonoBehaviour
     {

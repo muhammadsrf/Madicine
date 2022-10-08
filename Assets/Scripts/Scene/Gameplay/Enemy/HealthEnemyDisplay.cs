@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Madicine.Scene.Gameplay.Enemy
 {
-    public class BarEnemyUI : MonoBehaviour
+    public class HealthEnemyDisplay : MonoBehaviour
     {
         [SerializeField] private Transform _programmingModel;
+        [SerializeField] private Image _healthBarFiller;
         private Vector2 _myPosition;
         private Vector2 _playerPosition;
 

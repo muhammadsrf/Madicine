@@ -23,13 +23,13 @@ namespace Madicine.Scene.Gampalay.Players
             _model = GetComponent<PlayerModel>();
             _mainCamera = Camera.main;
         }
-
+        
         private void Update()
         {
             _userInput.PlayerMove.Attact.performed += (ctx) => Shoot();
             _userInput.PlayerMove.Enable();
             _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
-            FaceTo(_input);
+            FaceTo(_input); 
             MoveTo(_input);
             Aim();
 
@@ -37,16 +37,15 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void MoveTo(Vector3 vector)
         {
-            controller.Move(vector * _speed * Time.deltaTime);
+            controller.Move( vector * _speed * Time.deltaTime);
         }
 
-        private void FaceTo(Vector3 vector)
+        private void FaceTo( Vector3 vector)
         {
-            if (vector != Vector3.zero)
-            {
+            if (vector != Vector3.zero){
                 var relative = (_transformModel.position + vector) - _transformModel.position;
                 var rot = Quaternion.LookRotation(relative, Vector3.up);
-                _transformModel.rotation = rot;
+               _transformModel.rotation = rot;
             }
         }
 
@@ -64,7 +63,7 @@ namespace Madicine.Scene.Gampalay.Players
 
         private (bool success, Vector3 position) GetMousePosition()
         {
-            Vector3 mousePos = Mouse.current.position.ReadValue();
+            Vector3 mousePos = Mouse.current.position.ReadValue(); 
             var ray = _mainCamera.ScreenPointToRay(mousePos);
 
             if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
@@ -77,9 +76,8 @@ namespace Madicine.Scene.Gampalay.Players
             }
         }
 
-        private void Shoot()
-        {
-            // Debug.Log("sprayyy wryyyyyy.....");
+        private void Shoot(){
+            Debug.Log("sprayyy wryyyyyy.....");
         }
     }
 }

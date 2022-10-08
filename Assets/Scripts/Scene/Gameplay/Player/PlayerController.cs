@@ -81,7 +81,7 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void Shoot(){
             Debug.Log("sprayyy wryyyyyy.....");
-            GameObject obj = Instantiate(_weapons.GetComponet<GameObject>(), _nozelWeapon.transform);
+            //GameObject obj = Instantiate(_weapons.GameObject, _nozelWeapon.transform);
         }
     }
 }

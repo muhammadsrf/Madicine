@@ -20,6 +20,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             SpawnInit();
             Spawn();
+            _enemyActive++;
         }
 
         private void Update()

@@ -5,7 +5,6 @@ namespace Madicine.Scene.Gameplay.Enemy
 {
     public class EnemyMovement : MonoBehaviour, IAction
     {
-        [SerializeField] private Transform _target;
         [SerializeField] private float _maxSpeed = 6f;
 
         private NavMeshAgent _navMeshAgent;

@@ -5,21 +5,25 @@ namespace Madicine.Scene.Gameplay.Enemy
 {
     public class EnemyAIController : MonoBehaviour
     {
-        [SerializeField] private float chaseDistance = 5f;
-        [SerializeField] private float suspicionTime = 3f;
+        [SerializeField] private float _chaseDistance = 5f;
+        [SerializeField] private float _suspicionTime = 3f;
         [Range(0, 1)]
-        [SerializeField] private float speedFraction = 0.2f;
+        [SerializeField] private float _speedFraction = 0.2f;
+        [SerializeField] private Transform _areaChase;
 
-        private EnemyMovement mover;
-        private GameObject player;
-        private float timeSinceLastSawPlayer = Mathf.Infinity;
-        private float timeSinceArrivedAtWaypoint = Mathf.Infinity;
-        private float timeSinceAggrevated = Mathf.Infinity;
+        private EnemyMovement _mover;
+        private EnemyAttack _enemyAttack;
+        private GameObject _player;
+        private float _timeSinceLastSawPlayer = Mathf.Infinity;
+        private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        private float _timeSinceAggrevated = Mathf.Infinity;
 
         private void Awake()
         {
-            mover = GetComponent<EnemyMovement>();
-            player = GameObject.FindWithTag("Player");
+            _mover = GetComponent<EnemyMovement>();
+            _enemyAttack = GetComponent<EnemyAttack>();
+            _player = GameObject.FindWithTag("Player");
+            _areaChase.localScale = Vector3.one * _chaseDistance * 2;
         }
 
         public void Reset()
@@ -38,9 +42,15 @@ namespace Madicine.Scene.Gameplay.Enemy
             {
                 AttackBehaviour();
             }
-            else if (timeSinceLastSawPlayer < suspicionTime)
+            else if (_timeSinceLastSawPlayer > _suspicionTime && !IsAggrevated())
             {
                 SuspicionBehaviour();
+            }
+
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                _enemyAttack.ShotProjectile();
+                _enemyAttack.AreaAttack(_player);
             }
 
             UpdateTimers();
@@ -48,13 +58,23 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void AttackBehaviour()
         {
-            mover.StartMoveAction(player.transform.position, speedFraction);
+            _timeSinceAggrevated = 0;
+            _timeSinceLastSawPlayer = 0;
+
+            _mover.StartMoveAction(_player.transform.position, _speedFraction);
+            _enemyAttack.StartAttack(_player);
         }
 
         private bool IsAggrevated()
         {
-            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            return distanceToPlayer < chaseDistance;
+            float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+            return distanceToPlayer < _chaseDistance;
+        }
+
+        private float CheckDistanceToPlayer()
+        {
+            float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
+            return distanceToPlayer;
         }
 
         private void SuspicionBehaviour()
@@ -64,9 +84,9 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void UpdateTimers()
         {
-            timeSinceLastSawPlayer += Time.deltaTime;
-            timeSinceArrivedAtWaypoint += Time.deltaTime;
-            timeSinceAggrevated += Time.deltaTime;
+            _timeSinceLastSawPlayer += Time.deltaTime;
+            _timeSinceArrivedAtWaypoint += Time.deltaTime;
+            _timeSinceAggrevated += Time.deltaTime;
         }
     }
 }

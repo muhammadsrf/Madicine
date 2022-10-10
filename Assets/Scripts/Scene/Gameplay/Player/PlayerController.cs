@@ -19,12 +19,15 @@ namespace Madicine.Scene.Gampalay.Players
         private CharacterController _controller;
         private BaseWeapon _weapons;
 
+        [SerializeField] private WeaponContoller _weaponController;
+
         private void Start()
         {
             _userInput = new UserInput();
             _controller = GetComponent<CharacterController>();
             _model = GetComponent<PlayerModel>();
             _mainCamera = Camera.main;
+            //_weaponController = new WeaponContoller();
         }
         
         private void Update()
@@ -80,8 +83,7 @@ namespace Madicine.Scene.Gampalay.Players
         }
 
         private void Shoot(){
-            Debug.Log("sprayyy wryyyyyy.....");
-            //GameObject obj = Instantiate(_weapons.GameObject, _nozelWeapon.transform);
+            _weaponController.Shoot(_nozelWeapon.transform);
         }
     }
 }

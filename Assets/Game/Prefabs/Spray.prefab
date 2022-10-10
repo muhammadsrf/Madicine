@@ -126,5 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59d788b497b4e1c0a652c7bc78b2fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   amountToPool: 10
   objectToPool: {fileID: 5181390528752311597}
+  _rg: {fileID: 5258798176038452685}

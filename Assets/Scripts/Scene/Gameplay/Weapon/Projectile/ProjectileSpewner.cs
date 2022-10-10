@@ -17,15 +17,16 @@ public class ProjectileSpewner : MonoBehaviour
 
     private void Start() {
         pooledObjects = new List<GameObject>();
+        int j = 0;
         foreach (BaseProjectile item in objectToPooleds)
         {
             for (int i = 0; i < item.amountToPool; i++)
             {
                 GameObject obj = (GameObject)Instantiate(item.objectToPool);
-				obj.GetComponent<BaseProjectile>().index = i;
+				obj.GetComponent<BaseProjectile>().indexProjectile = j;
                 obj.SetActive(false);
                 pooledObjects.Add(obj);
-                Debug.Log($" init : {obj}");
+                j++;
             }
         }
 
@@ -34,7 +35,6 @@ public class ProjectileSpewner : MonoBehaviour
     public GameObject GetPooledObject(string name){
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            Debug.Log(!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == name);
             if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == name)
             {
                 return pooledObjects[i];
@@ -57,7 +57,6 @@ public class ProjectileSpewner : MonoBehaviour
     }
 
 	public void DestroyProjec(int i){
-        Debug.Log($" destroy |= {pooledObjects[i].GetComponent<BaseProjectile>().index}");
 		pooledObjects[i].SetActive(false);
 	}
 

@@ -3,7 +3,7 @@ using Madicine.Scene.Gampalay.Weapons;
 
 public class WeaponContoller : MonoBehaviour {
     
-    private int SelectedWeapon = 0;
+    [SerializeField] private int SelectedWeapon = 0;
     private GameObject _weapon;
     private string nameTypeWeapon;
     public void Shoot(Transform spawner)
@@ -29,6 +29,12 @@ public class WeaponContoller : MonoBehaviour {
     // }
 
     private void Update() {
+        if(this.gameObject.transform.childCount > SelectedWeapon){
+             _weapon = this.gameObject.transform.GetChild(SelectedWeapon).gameObject;
+        }else{
+            _weapon = this.gameObject.transform.GetChild(0).gameObject;
+        }
+        nameTypeWeapon = _weapon.GetComponent<BaseWeapon>().nameType;
     }
 
     private void DestroyinControoler(GameObject objects) {
@@ -47,7 +53,5 @@ public class WeaponContoller : MonoBehaviour {
     }
 
     private void Start() {
-        _weapon = this.gameObject.transform.GetChild(0).gameObject;
-        nameTypeWeapon = _weapon.GetComponent<BaseWeapon>().nameType;
     }
 }

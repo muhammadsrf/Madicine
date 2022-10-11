@@ -26,7 +26,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         private void Update()
         {
             _timer += Time.deltaTime;
-            if(_timer >= 5)
+            if (_timer >= 5)
             {
                 Spawn();
                 _timer = 0;
@@ -45,9 +45,9 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void SpawnInit()
         {
-            for(int i = 0; i < _amountToPool; i++)
+            for (int i = 0; i < _amountToPool; i++)
             {
-                for(int j = 0; j < _enemies.Count; j++)
+                for (int j = 0; j < _enemies.Count; j++)
                 {
                     Vector3 ranPos = new Vector3(Random.Range(-_maxPosition.x, _maxPosition.x), Random.Range(-_maxPosition.y, _maxPosition.y), Random.Range(-_maxPosition.z, _maxPosition.z));
                     var tmp = Instantiate(_enemies[j], ranPos, Quaternion.identity);
@@ -58,16 +58,16 @@ namespace Madicine.Scene.Gameplay.Enemy
                         tmp.SetActive(false);
                     }
                 }
-               
+
             }
         }
 
         private void Spawn()
         {
-            for(int i = 0; i < _pooledEnemies.Count; i++)
+            for (int i = 0; i < _pooledEnemies.Count; i++)
             {
                 int random = Random.Range(0, _pooledEnemies.Count);
-                if(_enemyActive <= _maxToSpawn)
+                if (_enemyActive <= _maxToSpawn)
                 {
                     if (!_pooledEnemies[random].activeInHierarchy)
                     {
@@ -81,7 +81,7 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         public void AddToPool(GameObject obj)
         {
-            if(obj.activeInHierarchy)
+            if (obj.activeInHierarchy)
             {
                 obj.SetActive(false);
                 _enemyActive--;

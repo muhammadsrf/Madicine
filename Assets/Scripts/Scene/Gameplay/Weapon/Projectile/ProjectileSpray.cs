@@ -1,16 +1,22 @@
 using UnityEngine;
 
-namespace Madicine.Scene.Gampalay.Weapons{
-    public class ProjectileSpray : BaseProjectile {
-        private float timing = 2f;
+namespace Madicine.Scene.Gameplay.Weapons
+{
+    public class ProjectileSpray : BaseProjectile
+    {
+        private float _timing = 2f;
 
-        private void Update() {
-            if(timing < 0){
+        private void Update()
+        {
+            if (_timing < 0)
+            {
                 DestroyProjectile();
-                timing = 2f;
-            }else{timing -= Time.deltaTime;}
+                _timing = 2f;
+            }
+            else { _timing -= Time.deltaTime; }
         }
-        private void Start(){
+        private void Start()
+        {
             _rg.AddForce(transform.up * 3f, ForceMode.VelocityChange);
         }
     }

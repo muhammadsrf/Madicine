@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using Madicine.Scene.Gampalay.Weapons;
+using Madicine.Scene.Gameplay.Weapons;
 
-namespace Madicine.Scene.Gampalay.Players
+namespace Madicine.Scene.Gameplay.Players
 {
     public class PlayerController : MonoBehaviour
     {

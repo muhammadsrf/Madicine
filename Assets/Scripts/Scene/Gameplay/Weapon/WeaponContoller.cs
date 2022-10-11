@@ -1,10 +1,10 @@
 using UnityEngine;
-using Madicine.Scene.Gampalay.Weapons;
+using Madicine.Scene.Gameplay.Weapons;
 
-namespace Madicine.Scene.Gampalay.Weapons{
-
-    public class WeaponContoller : MonoBehaviour {
-        
+namespace Madicine.Scene.Gameplay.Weapons
+{
+    public class WeaponContoller : MonoBehaviour
+    {
         private int _seletedWeapon = 0;
         private string _typeProjectile;
         private string _weaponName;
@@ -12,7 +12,7 @@ namespace Madicine.Scene.Gampalay.Weapons{
         public void Shoot(Transform spawner)
         {
             // this to get object in pooledObject
-            GameObject objects = ProjectileSpewner.SharedInstance.GetPooledObject(_typeProjectile+"(Clone)");
+            GameObject objects = ProjectileSpewner.SharedInstance.GetPooledObject(_typeProjectile + "(Clone)");
             // this to save object from object pooling
             // loop to check object
             if (objects != null)
@@ -23,29 +23,37 @@ namespace Madicine.Scene.Gampalay.Weapons{
             }
         }
 
-        public void SelectWeapon(int i){
+        public void SelectWeapon(int i)
+        {
             _seletedWeapon = i;
         }
 
-        public string Get_seletedWeapon(){
+        public string Get_seletedWeapon()
+        {
             return _weaponName;
         }
 
-        public void Setlevel(int newlevel){
+        public void Setlevel(int newlevel)
+        {
             _weapon.GetComponent<BaseWeapon>().level = newlevel;
         }
 
-        private void Update() {
-            if(this.gameObject.transform.childCount > _seletedWeapon){
+        private void Update()
+        {
+            if (this.gameObject.transform.childCount > _seletedWeapon)
+            {
                 _weapon = this.gameObject.transform.GetChild(_seletedWeapon).gameObject;
-            }else{
+            }
+            else
+            {
                 _weapon = this.gameObject.transform.GetChild(0).gameObject;
             }
             _typeProjectile = _weapon.GetComponent<BaseWeapon>().projectileType;
             _weaponName = _weapon.GetComponent<BaseWeapon>().nameWeapon;
         }
 
-        private void DestroyinControoler(GameObject objects) {
+        private void DestroyinControoler(GameObject objects)
+        {
             //to destroy
             objects.SetActive(false);
             // orthis
@@ -54,7 +62,9 @@ namespace Madicine.Scene.Gampalay.Weapons{
                 if (gameObject.tag == "objectsInPolled")
                 {
                     gameObject.SetActive(false);
-                } else {
+                }
+                else
+                {
                     Destroy(gameObject);
                 }
             }

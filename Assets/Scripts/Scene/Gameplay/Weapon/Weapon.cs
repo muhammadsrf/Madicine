@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Madicine.Scene.Gampalay.Weapons
+namespace Madicine.Scene.Gameplay.Weapons
 {
     [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
     public class Weapon : ScriptableObject {

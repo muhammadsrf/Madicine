@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Madicine.Scene.Gampalay.Weapons;
+using Madicine.Scene.Gameplay.Weapons;
 
-namespace Madicine.Scene.Gampalay.Weapons{
+namespace Madicine.Scene.Gameplay.Weapons
+{
     public class ProjectileSpewner : MonoBehaviour
     {
         [HideInInspector] public static ProjectileSpewner SharedInstance;
         [HideInInspector] public List<GameObject> pooledObjects;
         public List<BaseProjectile> objectToPooleds;
 
-        private void Awake() {
+        private void Awake()
+        {
             SharedInstance = this;
-
         }
 
-        private void Start() {
+        private void Start()
+        {
             pooledObjects = new List<GameObject>();
             int j = 0;
             foreach (BaseProjectile item in objectToPooleds)
@@ -32,7 +34,8 @@ namespace Madicine.Scene.Gampalay.Weapons{
 
         }
 
-        public GameObject GetPooledObject(string name){
+        public GameObject GetPooledObject(string name)
+        {
             for (int i = 0; i < pooledObjects.Count; i++)
             {
                 if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == name)
@@ -44,7 +47,8 @@ namespace Madicine.Scene.Gampalay.Weapons{
             return null;
         }
 
-        public void DestroyProjec(int i){
+        public void DestroyProjec(int i)
+        {
             pooledObjects[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             pooledObjects[i].SetActive(false);
         }

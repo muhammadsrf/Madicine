@@ -122,9 +122,9 @@ GameObject:
   - component: {fileID: 8394315904679905072}
   - component: {fileID: 8394315904679905075}
   - component: {fileID: 8394315904679905074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   _transformModel: {fileID: 8394315904679905079}
   _groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _nozelWeapon: {fileID: 7840848845707690381}
   _dataplayerSO: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
   _weaponController: {fileID: 1530776971737935496}
@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -342,6 +342,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
       propertyPath: m_Name
       value: Hazmat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}

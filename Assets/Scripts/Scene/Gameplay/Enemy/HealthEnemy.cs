@@ -5,8 +5,8 @@ namespace Madicine.Scene.Gameplay.Enemy
 {
     public class HealthEnemy : MonoBehaviour
     {
-        [SerializeField] private AttributeEnemyData _enemyData;
         public int health;
+        [SerializeField] private AttributeEnemyData _enemyData;
         private HealthEnemyDisplay _healthEnemyDisplay;
 
         private void Awake()

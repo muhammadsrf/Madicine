@@ -1,3 +1,4 @@
+using Madicine.Scene.Gameplay.Players;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +23,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             _mover = GetComponent<EnemyMovement>();
             _enemyAttack = GetComponent<EnemyAttack>();
-            _player = GameObject.FindWithTag("Player");
+            _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
             _areaChase.localScale = Vector3.one * _chaseDistance * 2;
         }
 

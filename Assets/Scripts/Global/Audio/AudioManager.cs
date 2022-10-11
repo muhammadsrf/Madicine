@@ -15,7 +15,7 @@ namespace Madicine.Global.Audio
         public static AudioManager Instance;
         private void Awake()
         {
-            if(Instance == null)
+            if (Instance == null)
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
@@ -28,24 +28,24 @@ namespace Madicine.Global.Audio
 
         private void OnEnable()
         {
-            
+
         }
 
         private void OnDisable()
         {
-            
+
         }
 
         private void SetCurrentBgmClip(string clip)
         {
-            for(int i = 0; i < _audioData.Bgm.Count; i ++)
+            for (int i = 0; i < _audioData.Bgm.Count; i++)
             {
                 var soundName = _audioData.Bgm[i].SoundName;
-                if(soundName == clip)
+                if (soundName == clip)
                 {
                     var currentClip = _audioData.Bgm[i].CLip;
                     _bgmSource.clip = currentClip;
-                    if(!_isBgmMute)
+                    if (!_isBgmMute)
                     {
                         _bgmSource.Play();
                     }
@@ -60,13 +60,13 @@ namespace Madicine.Global.Audio
 
         private void SetCurrentSoundFXClip(string clip)
         {
-            for(int i = 0; i < _audioData.SoundFX.Count; i ++)
+            for (int i = 0; i < _audioData.SoundFX.Count; i++)
             {
                 var soundName = _audioData.SoundFX[i].SoundName;
-                if(soundName == clip)
+                if (soundName == clip)
                 {
                     _soundFXSource.clip = _audioData.SoundFX[i].clip;
-                    if(!_isSoundMute)
+                    if (!_isSoundMute)
                     {
                         _soundFXSource.Play();
                     }

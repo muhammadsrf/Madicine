@@ -7,29 +7,42 @@ namespace Madicine.Scene.Gampalay.Players
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float _speed = 5f;
-        [SerializeField] private Transform _transformModel;
-        [SerializeField] private LayerMask _groundMask;
-        [SerializeField] private GameObject _nozelWeapon;
-        [SerializeField] private PlayerDataSO _dataplayerSO;
 
-        private Camera _mainCamera;
+
+        //data player
+        [SerializeField] private Transform _transformModel;
+        [SerializeField] private PlayerDataSO _dataplayerSO;
         private PlayerModel _model;
         private int _maxHealth;
-        private UserInput _userInput;
-        private Vector3 _input;
-        private Vector3 _currentMovement;
         private bool _isgrounded;
-        private CharacterController _controller;
         private BaseWeapon _weapons;
 
-        [SerializeField] private WeaponContoller _weaponController;
+        //input
+        private UserInput _userInput;
+        private Vector3 _input;
 
-        private void Start()
-        {
+        //control move 
+        [SerializeField] private float _speed = 5f;
+        [SerializeField] private GameObject _nozelWeapon;
+        [SerializeField] private LayerMask _groundMask;
+        [SerializeField] private WeaponContoller _weaponController;
+        [SerializeField] private float _dashDistance = 3f;
+        [SerializeField] private float _dashSpeed = 6 ;
+        private Camera _mainCamera;
+        private Vector3 _currentMovement;
+        private CharacterController _controller;
+        private float _dashStoppingSpeed = 0.1f;
+        private const float _maxDistance = 1.0f;
+        private float _currentDashTime = _maxDistance;
+
+        private void Awake() {
             _mainCamera = Camera.main;
             _userInput = new UserInput();
             _controller = GetComponent<CharacterController>();
+        }
+
+        private void Start()
+        {
             _model = GetComponent<PlayerModel>();
             _model.nameCharcter = _dataplayerSO.nameCharcter;
             _model.health = _dataplayerSO.health;
@@ -41,6 +54,7 @@ namespace Madicine.Scene.Gampalay.Players
         private void Update()
         {
             _userInput.PlayerMove.Attact.performed += (ctx) => Shoot();
+            _userInput.PlayerMove.Dash.performed += (ctx) => _currentDashTime = 0;
             _userInput.PlayerMove.Enable();
             _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
             _isgrounded = _controller.isGrounded;
@@ -51,8 +65,17 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void MoveTo(Vector3 vector)
         {
-            _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
+            if(_currentDashTime < _maxDistance) {
+                _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _dashSpeed * _dashDistance;
+                _currentDashTime += _dashStoppingSpeed;
+            }else
+            {
+                _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
+            }
             _controller.Move(_currentMovement);
+        }
+
+        public void DashMOve(){
         }
 
         private void FaceTo( Vector3 vector)

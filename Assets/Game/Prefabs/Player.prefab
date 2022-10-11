@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 8394315904679905074}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,13 +197,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.2
+  m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.47, z: 0}
 --- !u!114 &8394315904679905075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   _transformModel: {fileID: 8394315904679905079}
   _groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   _nozelWeapon: {fileID: 7840848845707690381}
   _dataplayerSO: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
   _weaponController: {fileID: 1530776971737935496}
@@ -300,12 +300,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6407592
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9366666
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6407592
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.54
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
       propertyPath: m_LocalPosition.z

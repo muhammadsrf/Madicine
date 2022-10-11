@@ -1,17 +1,27 @@
 using UnityEngine;
 using System;
 
-[Serializable]   
-public class BaseProjectile : MonoBehaviour{
+namespace Madicine.Scene.Gampalay.Weapons
+{
+    [Serializable]   
+    public class BaseProjectile : MonoBehaviour{
 
-    private Rigidbody _rg;
-	public int indexProjectile;
-    public int amountToPool;
-    public GameObject objectToPool;
+        [HideInInspector] public int indexProjectile;
+        public int amountToPool;
+        public GameObject objectToPool;
+        [SerializeField] protected Rigidbody _rg;
 
-    public void DestroyProjectile(){
-        //this.objectToPool.gameObject.SetActive(false);
-		ProjectileSpewner.SharedInstance.DestroyProjec(indexProjectile);
+        public void DestroyProjectile(){
+            //this.objectToPool.gameObject.SetActive(false);
+            ProjectileSpewner.SharedInstance.DestroyProjec(indexProjectile);
+        }
+
+        private void OnCollisionEnter(Collision other) {
+            if(other.transform.tag == "Enemy"){
+                //call function to reduce enemy healt
+            }
+        }
+        
     }
     
 }

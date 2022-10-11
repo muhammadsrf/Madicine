@@ -1,57 +1,64 @@
 using UnityEngine;
 using Madicine.Scene.Gampalay.Weapons;
 
-public class WeaponContoller : MonoBehaviour {
-    
-    [SerializeField] private int SelectedWeapon = 0;
-    private GameObject _weapon;
-    private string nameTypeWeapon;
-    public void Shoot(Transform spawner)
-    {
-        // this to get object in pooledObject
-		GameObject objects = ProjectileSpewner.SharedInstance.GetPooledObject(nameTypeWeapon+"(Clone)");
-        // this to save object from object pooling
-        // loop to check object
-        if (objects != null)
-        {
-            objects.transform.position = spawner.transform.position;
-            objects.transform.rotation = spawner.transform.rotation;
-            objects.SetActive(true);
-        }
-    }
+namespace Madicine.Scene.Gampalay.Weapons{
 
-    public void SelectWeapon(int i){
+    public class WeaponContoller : MonoBehaviour {
         
-    }
-
-    // public BaseWeapon GetSelectedWeapon(){
-    //     return BaseWeapon;
-    // }
-
-    private void Update() {
-        if(this.gameObject.transform.childCount > SelectedWeapon){
-             _weapon = this.gameObject.transform.GetChild(SelectedWeapon).gameObject;
-        }else{
-            _weapon = this.gameObject.transform.GetChild(0).gameObject;
-        }
-        nameTypeWeapon = _weapon.GetComponent<BaseWeapon>().nameType;
-    }
-
-    private void DestroyinControoler(GameObject objects) {
-        //to destroy
-        objects.SetActive(false);
-        // orthis
-        if (objects.gameObject.tag == "Enemy")
+        private int _seletedWeapon = 0;
+        private string _typeProjectile;
+        private string _weaponName;
+        private GameObject _weapon;
+        public void Shoot(Transform spawner)
         {
-            if (gameObject.tag == "objectsInPolled")
+            // this to get object in pooledObject
+            GameObject objects = ProjectileSpewner.SharedInstance.GetPooledObject(_typeProjectile+"(Clone)");
+            // this to save object from object pooling
+            // loop to check object
+            if (objects != null)
             {
-                gameObject.SetActive(false);
-            } else {
-                Destroy(gameObject);
+                objects.transform.position = spawner.transform.position;
+                objects.transform.rotation = spawner.transform.rotation;
+                objects.SetActive(true);
             }
         }
-    }
 
-    private void Start() {
+        public void SelectWeapon(int i){
+            _seletedWeapon = i;
+        }
+
+        public string Get_seletedWeapon(){
+            return _weaponName;
+        }
+
+        public void Setlevel(int newlevel){
+            _weapon.GetComponent<BaseWeapon>().level = newlevel;
+        }
+
+        private void Update() {
+            if(this.gameObject.transform.childCount > _seletedWeapon){
+                _weapon = this.gameObject.transform.GetChild(_seletedWeapon).gameObject;
+            }else{
+                _weapon = this.gameObject.transform.GetChild(0).gameObject;
+            }
+            _typeProjectile = _weapon.GetComponent<BaseWeapon>().projectileType;
+            _weaponName = _weapon.GetComponent<BaseWeapon>().nameWeapon;
+        }
+
+        private void DestroyinControoler(GameObject objects) {
+            //to destroy
+            objects.SetActive(false);
+            // orthis
+            if (objects.gameObject.tag == "Enemy")
+            {
+                if (gameObject.tag == "objectsInPolled")
+                {
+                    gameObject.SetActive(false);
+                } else {
+                    Destroy(gameObject);
+                }
+            }
+        }
+
     }
 }

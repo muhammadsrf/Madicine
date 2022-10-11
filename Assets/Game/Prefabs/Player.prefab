@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8628798029315709722}
   - component: {fileID: 8970048577043521896}
-  - component: {fileID: 5055547817946978016}
   m_Layer: 0
   m_Name: WeaponSpray
   m_TagString: Untagged
@@ -44,25 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82abb8d40eede8a586c568c9841071d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameType: Spray
+  nameWeapon: 
   level: 0
   demage: 5
-  projectileType: Spray
---- !u!114 &5055547817946978016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202013271432064076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ce22f984000bc60a3f8a295d93f27b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameType: Spray
-  level: 0
-  demage: 0
   projectileType: Spray
 --- !u!1 &7840848845707690381
 GameObject:
@@ -267,7 +250,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7145331505642392271}
   - component: {fileID: 2882081076943110394}
-  - component: {fileID: 2024402138001887482}
   m_Layer: 0
   m_Name: WeaponInject
   m_TagString: Untagged
@@ -301,25 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b40647fe90968398d9604574ff6fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameType: inject
+  nameWeapon: 
   level: 0
   demage: 10
-  projectileType: Inject
---- !u!114 &2024402138001887482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9077517050650791280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ce22f984000bc60a3f8a295d93f27b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameType: inject
-  level: 0
-  demage: 0
   projectileType: Inject
 --- !u!1001 &5437674021234979807
 PrefabInstance:

@@ -5,9 +5,10 @@ using UnityEngine;
 namespace Madicine.Scene.Gampalay.Weapons
 {
     public class BaseWeapon : MonoBehaviour {
-        public string nameType;
+        public string nameWeapon;
         public int level;
         public int demage;
         public string projectileType;
     }
+
 }

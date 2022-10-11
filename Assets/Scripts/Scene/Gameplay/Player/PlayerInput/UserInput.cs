@@ -40,9 +40,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""name"": ""Attact"",
                     ""type"": ""Value"",
                     ""id"": ""6f85f503-8952-4b8a-8a8a-f17dfa551b53"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Digital"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
                 }
             ],
@@ -98,6 +98,39 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""move"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""id"": ""c215a0dd-c6f9-40c5-b6b3-48b39b676146"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""5c6e7359-b247-4a83-848a-74fa96fe7c70"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""9504e4c6-d0ee-4634-be71-85de238ddbb3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true

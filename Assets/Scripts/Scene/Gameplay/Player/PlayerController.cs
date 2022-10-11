@@ -11,11 +11,15 @@ namespace Madicine.Scene.Gampalay.Players
         [SerializeField] private Transform _transformModel;
         [SerializeField] private LayerMask _groundMask;
         [SerializeField] private GameObject _nozelWeapon;
+        [SerializeField] private PlayerDataSO _dataplayerSO;
 
         private Camera _mainCamera;
         private PlayerModel _model;
+        private int _maxHealth;
         private UserInput _userInput;
         private Vector3 _input;
+        private Vector3 _currentMovement;
+        private bool _isgrounded;
         private CharacterController _controller;
         private BaseWeapon _weapons;
 
@@ -23,11 +27,15 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void Start()
         {
+            _mainCamera = Camera.main;
             _userInput = new UserInput();
             _controller = GetComponent<CharacterController>();
             _model = GetComponent<PlayerModel>();
-            _mainCamera = Camera.main;
-            //_weaponController = new WeaponContoller();
+            _model.nameCharcter = _dataplayerSO.nameCharcter;
+            _model.health = _dataplayerSO.health;
+            _model.level = _dataplayerSO.level;
+            _model.skin = _dataplayerSO.skin;
+            _maxHealth = _model.health;
         }
         
         private void Update()
@@ -35,15 +43,16 @@ namespace Madicine.Scene.Gampalay.Players
             _userInput.PlayerMove.Attact.performed += (ctx) => Shoot();
             _userInput.PlayerMove.Enable();
             _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
+            _isgrounded = _controller.isGrounded;
             FaceTo(_input); 
             MoveTo(_input);
             Aim();
-
         }
 
         private void MoveTo(Vector3 vector)
         {
-            _controller.Move( vector * _speed * Time.deltaTime);
+            _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
+            _controller.Move(_currentMovement);
         }
 
         private void FaceTo( Vector3 vector)
@@ -84,6 +93,17 @@ namespace Madicine.Scene.Gampalay.Players
 
         private void Shoot(){
             _weaponController.Shoot(_nozelWeapon.transform);
+        }
+
+        public void SubtractHealth(int demage){
+            _model.health -= demage;
+            if(_model.health > 1 ){
+                Debug.Log("gameover");
+            }
+        }
+
+        public int GetcurrentHealth(){
+            return _model.health;
         }
     }
 }

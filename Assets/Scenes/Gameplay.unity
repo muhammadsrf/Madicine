@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658828, g: 0.49642313, b: 0.5748253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -403,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 94126328173182679, guid: 16bc37465cfdd524486031b2f4b88451, type: 3}
       propertyPath: m_Name
-      value: Main Camera (1)
+      value: Main Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16bc37465cfdd524486031b2f4b88451, type: 3}
@@ -530,7 +530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 298603260808563508, guid: 5dccaf5e4a613df4897abae3bc5e79fe, type: 3}
       propertyPath: m_Name
-      value: CM vcam1 (1)
+      value: CM vcam1
       objectReference: {fileID: 0}
     - target: {fileID: 298603260808563509, guid: 5dccaf5e4a613df4897abae3bc5e79fe, type: 3}
       propertyPath: m_Follow
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 944513074}
   - component: {fileID: 944513073}
   m_Layer: 0
-  m_Name: EventSystem (1)
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054030114}
   m_Layer: 0
-  m_Name: Environment (1)
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394315904679905085, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8394315904679905085, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
       propertyPath: m_Layer
@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 1943718375}
   - component: {fileID: 1943718374}
   m_Layer: 0
-  m_Name: ManagerPeluru (1)
+  m_Name: ManagerPeluru
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

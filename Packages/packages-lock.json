@@ -1,5 +1,17 @@
 {
   "dependencies": {
+    "com.h8man.2d.navmeshplus": {
+      "version": "file:com.h8man.2d.navmeshplus",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.intothedev.objectpooling": {
+      "version": "file:com.intothedev.objectpooling",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.cinemachine": {
       "version": "2.8.9",
       "depth": 0,
@@ -47,6 +59,15 @@
       "source": "registry",
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.recorder": {
+      "version": "2.5.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

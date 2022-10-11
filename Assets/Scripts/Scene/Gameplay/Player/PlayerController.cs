@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Madicine.Scene.Gampalay.Weapons;
 
 namespace Madicine.Scene.Gampalay.Players
 {
@@ -9,19 +10,32 @@ namespace Madicine.Scene.Gampalay.Players
         [SerializeField] private float _speed = 5f;
         [SerializeField] private Transform _transformModel;
         [SerializeField] private LayerMask _groundMask;
+        [SerializeField] private GameObject _nozelWeapon;
+        [SerializeField] private PlayerDataSO _dataplayerSO;
 
         private Camera _mainCamera;
         private PlayerModel _model;
+        private int _maxHealth;
         private UserInput _userInput;
         private Vector3 _input;
-        private CharacterController controller;
+        private Vector3 _currentMovement;
+        private bool _isgrounded;
+        private CharacterController _controller;
+        private BaseWeapon _weapons;
+
+        [SerializeField] private WeaponContoller _weaponController;
 
         private void Start()
         {
-            _userInput = new UserInput();
-            controller = GetComponent<CharacterController>();
-            _model = GetComponent<PlayerModel>();
             _mainCamera = Camera.main;
+            _userInput = new UserInput();
+            _controller = GetComponent<CharacterController>();
+            _model = GetComponent<PlayerModel>();
+            _model.nameCharcter = _dataplayerSO.nameCharcter;
+            _model.health = _dataplayerSO.health;
+            _model.level = _dataplayerSO.level;
+            _model.skin = _dataplayerSO.skin;
+            _maxHealth = _model.health;
         }
         
         private void Update()
@@ -29,15 +43,16 @@ namespace Madicine.Scene.Gampalay.Players
             _userInput.PlayerMove.Attact.performed += (ctx) => Shoot();
             _userInput.PlayerMove.Enable();
             _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
+            _isgrounded = _controller.isGrounded;
             FaceTo(_input); 
             MoveTo(_input);
             Aim();
-
         }
 
         private void MoveTo(Vector3 vector)
         {
-            controller.Move( vector * _speed * Time.deltaTime);
+            _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
+            _controller.Move(_currentMovement);
         }
 
         private void FaceTo( Vector3 vector)
@@ -77,7 +92,18 @@ namespace Madicine.Scene.Gampalay.Players
         }
 
         private void Shoot(){
-            Debug.Log("sprayyy wryyyyyy.....");
+            _weaponController.Shoot(_nozelWeapon.transform);
+        }
+
+        public void SubtractHealth(int demage){
+            _model.health -= demage;
+            if(_model.health > 1 ){
+                Debug.Log("gameover");
+            }
+        }
+
+        public int GetcurrentHealth(){
+            return _model.health;
         }
     }
 }

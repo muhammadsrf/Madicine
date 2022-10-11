@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Madicine.Scene.Gampalay.Weapons
 {
-    [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
-    public class Weapon : ScriptableObject {
-        public string nameType;
+    public class BaseWeapon : MonoBehaviour {
+        public string nameWeapon;
         public int level;
         public int demage;
+        public string projectileType;
     }
+
 }

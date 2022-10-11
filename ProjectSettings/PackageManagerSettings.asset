@@ -24,28 +24,20 @@ MonoBehaviour:
     m_Scopes: []
     m_IsDefault: 1
     m_Capabilities: 7
-  - m_Id: scoped:mimo
-    m_Name: mimo
-    m_Url: https://assetstore.unity.com/packages/3d/characters/jammo-character-mix-and-jam-158456
-    m_Scopes:
-    - My Assets
-    m_IsDefault: 0
-    m_Capabilities: 0
-  m_UserSelectedRegistryName: mimo
+  m_UserSelectedRegistryName: 
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_ErrorMessage: 
     m_Original:
-      m_Id: scoped:mimo
-      m_Name: mimo
-      m_Url: https://assetstore.unity.com/packages/3d/characters/jammo-character-mix-and-jam-158456
-      m_Scopes:
-      - My Assets
+      m_Id: 
+      m_Name: 
+      m_Url: 
+      m_Scopes: []
       m_IsDefault: 0
       m_Capabilities: 0
     m_Modified: 0
-    m_Name: mimo
-    m_Url: https://assetstore.unity.com/packages/3d/characters/jammo-character-mix-and-jam-158456
+    m_Name: 
+    m_Url: 
     m_Scopes:
-    - My Assets
+    - 
     m_SelectedScopeIndex: 0

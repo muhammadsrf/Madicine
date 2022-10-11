@@ -12,7 +12,7 @@ namespace Madicine.Scene.Gampalay.Players
         public string nameCharcter;
         public int health;
         public int level;
-        public Weapon weapon;
+        public int armoreLevel;
         public GameObject skin;
     }
 }

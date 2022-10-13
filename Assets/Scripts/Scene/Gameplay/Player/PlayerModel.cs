@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Madicine.Scene.Gameplay.Players
+namespace Madicine.Scene.Gameplay.Player
 {
     public class PlayerModel : MonoBehaviour
     {

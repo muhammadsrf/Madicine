@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Madicine.Scene.Gameplay.Weapons;
 
-namespace Madicine.Scene.Gameplay.Players
+namespace Madicine.Scene.Gameplay.Player
 {
     public class PlayerController : MonoBehaviour
     {
@@ -36,30 +36,32 @@ namespace Madicine.Scene.Gameplay.Players
             _model.skin = _dataplayerSO.skin;
             _maxHealth = _model.health;
         }
-        
+
         private void Update()
         {
             _userInput.PlayerMove.Attact.performed += (ctx) => Shoot();
             _userInput.PlayerMove.Enable();
             _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
             _isgrounded = _controller.isGrounded;
-            FaceTo(_input); 
+            FaceTo(_input);
             MoveTo(_input);
             Aim();
+            SwapWeapon();
         }
 
         private void MoveTo(Vector3 vector)
         {
-            _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
+            _currentMovement = new Vector3(vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
             _controller.Move(_currentMovement);
         }
 
-        private void FaceTo( Vector3 vector)
+        private void FaceTo(Vector3 vector)
         {
-            if (vector != Vector3.zero){
+            if (vector != Vector3.zero)
+            {
                 var relative = (_transformModel.position + vector) - _transformModel.position;
                 var rot = Quaternion.LookRotation(relative, Vector3.up);
-               _transformModel.rotation = rot;
+                _transformModel.rotation = rot;
             }
         }
 
@@ -77,7 +79,7 @@ namespace Madicine.Scene.Gameplay.Players
 
         private (bool success, Vector3 position) GetMousePosition()
         {
-            Vector3 mousePos = Mouse.current.position.ReadValue(); 
+            Vector3 mousePos = Mouse.current.position.ReadValue();
             var ray = _mainCamera.ScreenPointToRay(mousePos);
 
             if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
@@ -90,19 +92,32 @@ namespace Madicine.Scene.Gameplay.Players
             }
         }
 
-        private void Shoot(){
+        private void Shoot()
+        {
             _weaponController.Shoot(_nozelWeapon.transform);
         }
 
-        public void SubtractHealth(int demage){
+        public void SubtractHealth(int demage)
+        {
             _model.health -= demage;
-            if(_model.health > 1 ){
+            if (_model.health > 1)
+            {
                 Debug.Log("gameover");
             }
         }
 
-        public int GetcurrentHealth(){
+        public int GetcurrentHealth()
+        {
             return _model.health;
+        }
+
+        public void SwapWeapon()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                _nozelWeapon.GetComponent<WeaponContoller>().SelectWeapon();
+                PlayerEvents.SwapWeapon();
+            }
         }
     }
 }

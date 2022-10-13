@@ -1,3 +1,4 @@
+using System;
 using Madicine.Scene.Gameplay.Players;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,12 +16,37 @@ namespace Madicine.Scene.Gameplay.Enemy
         private EnemyMovement _mover;
         private EnemyAttack _enemyAttack;
         private GameObject _player;
+        private HealthEnemy _healthEnemy;
+        private bool _enemyDeath;
         private float _timeSinceLastSawPlayer = Mathf.Infinity;
         private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
         private float _timeSinceAggrevated = Mathf.Infinity;
 
+        private void OnEnable()
+        {
+            _enemyDeath = false;
+            // listening to event death enemy
+            EnemyEvents.onEnemyDeath += this.EnemyDeath;
+        }
+
+        private void OnDisable()
+        {
+            // cancel listening to event death enemy
+            EnemyEvents.onEnemyDeath -= this.EnemyDeath;
+        }
+
+        private void EnemyDeath(int hp, HealthEnemy healthEnemy)
+        {
+            // ignoring event if call event is not from this healthEnemy object
+            if (healthEnemy != _healthEnemy) { return; }
+
+            _enemyDeath = true;
+            SpawnManager.AddToPoolObject(transform.parent.gameObject);
+        }
+
         private void Awake()
         {
+            _healthEnemy = GetComponent<HealthEnemy>();
             _mover = GetComponent<EnemyMovement>();
             _enemyAttack = GetComponent<EnemyAttack>();
             _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
@@ -39,6 +65,8 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void Update()
         {
+            if (_enemyDeath) { return; }
+
             if (IsAggrevated())
             {
                 AttackBehaviour();
@@ -69,7 +97,8 @@ namespace Madicine.Scene.Gameplay.Enemy
         private bool IsAggrevated()
         {
             float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
-            return distanceToPlayer < _chaseDistance;
+            // return distanceToPlayer < _chaseDistance;
+            return true;
         }
 
         private float CheckDistanceToPlayer()

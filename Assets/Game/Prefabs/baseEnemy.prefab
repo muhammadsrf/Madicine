@@ -415,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   _enemyData: {fileID: 11400000, guid: 5e02609ac98e6804f80c69fb29adc7c0, type: 2}
+  _virusGenome: {fileID: 1060583812181227537, guid: e905c6aa04a825d45908e7f4eb1e6bed, type: 3}
 --- !u!114 &4990548919154949812
 MonoBehaviour:
   m_ObjectHideFlags: 0

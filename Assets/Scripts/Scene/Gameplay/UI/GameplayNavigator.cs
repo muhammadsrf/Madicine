@@ -1,4 +1,3 @@
-using System;
 using Madicine.Scene.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;

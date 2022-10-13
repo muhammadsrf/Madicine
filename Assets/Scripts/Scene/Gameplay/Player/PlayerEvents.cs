@@ -12,6 +12,7 @@ namespace Madicine.Scene.Gameplay.Player
 
         public delegate void PlayerUIStats();
         public static event PlayerUIStats onWeaponChange;
+        public static event PlayerUIStats onExpChange;
 
         public static void PlayerGetAttack(int health)
         {
@@ -34,6 +35,14 @@ namespace Madicine.Scene.Gameplay.Player
             if (onWeaponChange != null)
             {
                 onWeaponChange();
+            }
+        }
+
+        public static void ExperienceChange()
+        {
+            if (onExpChange != null)
+            {
+                onExpChange();
             }
         }
     }

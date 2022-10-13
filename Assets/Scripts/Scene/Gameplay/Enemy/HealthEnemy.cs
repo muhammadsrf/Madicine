@@ -7,6 +7,7 @@ namespace Madicine.Scene.Gameplay.Enemy
     {
         public int health;
         [SerializeField] private AttributeEnemyData _enemyData;
+        [SerializeField] private GameObject _virusGenome;
 
         private void OnEnable()
         {
@@ -36,6 +37,9 @@ namespace Madicine.Scene.Gameplay.Enemy
             {
                 // call event trigger enemy death
                 GetComponent<EnemyEvents>().EnemyDeath(health, this);
+
+                // drop virus genome
+                Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
             }
             return health;
         }

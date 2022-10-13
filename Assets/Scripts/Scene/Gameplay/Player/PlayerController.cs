@@ -35,6 +35,9 @@ namespace Madicine.Scene.Gampalay.Players
         private const float _maxDistance = 1.0f;
         private float _currentDashTime = _maxDistance;
 
+        //animasi 
+        Animator animator;
+
         private void Awake() {
             _mainCamera = Camera.main;
             _userInput = new UserInput();
@@ -49,6 +52,7 @@ namespace Madicine.Scene.Gampalay.Players
             _model.level = _dataplayerSO.level;
             _model.skin = _dataplayerSO.skin;
             _maxHealth = _model.health;
+            animator  = GetComponent<Animator>();
         }
         
         private void Update()
@@ -73,10 +77,16 @@ namespace Madicine.Scene.Gampalay.Players
                 _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
             }
             _controller.Move(_currentMovement);
+
+            if(_currentMovement == Vector3.zero){
+                Debug.Log("berhenti");
+                animator.SetBool("dash", false);
+            }else if(_currentMovement != Vector3.zero){
+                Debug.Log("jalan");
+                animator.SetBool("dash", true);
+            }
         }
 
-        public void DashMOve(){
-        }
 
         private void FaceTo( Vector3 vector)
         {

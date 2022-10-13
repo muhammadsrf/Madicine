@@ -1,25 +1,42 @@
+using Madicine.Scene.Gameplay.Enemy;
 using UnityEngine;
 
-namespace Madicine.Scene.Gampalay.Weapons{
-    public class ProjectileInject : BaseProjectile {
+namespace Madicine.Scene.Gameplay.Weapons
+{
+    public class ProjectileInject : BaseProjectile
+    {
         [SerializeField] private float _speed;
-        private float timing = 2f;
+        [SerializeField] private int _damage = 10;
+        private float _timing = 2f;
 
-        private void Update() {
-            if(timing < 0){
+        private void Update()
+        {
+            if (_timing < 0)
+            {
                 DestroyProjectile();
-                timing = 2f;
-            }else{timing -= Time.deltaTime;}
+                _timing = 2f;
+            }
+            else { _timing -= Time.deltaTime; }
         }
 
-        private void FixedUpdate() {
-            _rg.AddForce(transform.up * _speed , ForceMode.Impulse);
-            
+        private void FixedUpdate()
+        {
+            _rg.AddForce(transform.up * _speed, ForceMode.Impulse);
+
         }
 
-        private void Start() {
+        private void Start()
+        {
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                other.GetComponent<HealthEnemy>().SubtractHealth(_damage);
+                DestroyProjectile();
+            }
+        }
     }
 
 }

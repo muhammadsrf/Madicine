@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Madicine.Scene.Gampalay.Weapons;
 
-
-namespace Madicine.Scene.Gampalay.Players
+namespace Madicine.Scene.Gameplay.Player
 {
-
     public class PlayerModel : MonoBehaviour
     {
         public string nameCharcter;

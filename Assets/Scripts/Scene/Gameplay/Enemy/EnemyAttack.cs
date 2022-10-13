@@ -25,14 +25,11 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         public void StartAttack(GameObject player)
         {
-            // GetComponent<ActionEnemyScheduler>().StartAction(this);
-
-            if (_timeSinceArea > _delayShotProjectile)
+            if (_timeSinceArea > _delayAreaDamage)
             {
                 AreaAttack(player);
                 _timeSinceArea = 0;
             }
-
 
             if (_timeSinceShot > _delayShotProjectile)
             {

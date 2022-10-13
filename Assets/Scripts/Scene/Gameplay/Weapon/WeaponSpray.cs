@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Madicine.Scene.Gampalay.Weapons
+namespace Madicine.Scene.Gameplay.Weapons
 {
     public class WeaponSpray : BaseWeapon
     {

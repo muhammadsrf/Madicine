@@ -5,39 +5,51 @@ namespace Madicine.Scene.Gameplay.Enemy
 {
     public class HealthEnemy : MonoBehaviour
     {
-        [SerializeField] private AttributeEnemyData _enemyData;
         public int health;
-        private HealthEnemyDisplay _healthEnemyDisplay;
+        [SerializeField] private AttributeEnemyData _enemyData;
+        [SerializeField] private GameObject _virusGenome;
 
-        private void Awake()
+        private void OnEnable()
         {
-            _healthEnemyDisplay = transform.parent.GetComponentInChildren<HealthEnemyDisplay>();
             ResetHealth();
         }
 
         // for test function with keyboard
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                if (SubtractHealth(10) == 0)
-                {
-                    Debug.Log("Mati!");
-                }
-            }
+            // if (Input.GetKeyDown(KeyCode.K))
+            // {
+            //     if (SubtractHealth(10) == 0)
+            //     {
+            //         Debug.Log("Mati!");
+            //     }
+            // }
         }
 
         public int SubtractHealth(int subtract)
         {
             health = Mathf.Max(0, health - subtract);
-            _healthEnemyDisplay.SetHealthDisplay((float)health / (float)_enemyData.GetHealthMax());
+
+            // call event trigger enemy get attack / enemy hurt
+            GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
+
+            if (health == 0)
+            {
+                // call event trigger enemy death
+                GetComponent<EnemyEvents>().EnemyDeath(health, this);
+
+                // drop virus genome
+                Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
+            }
             return health;
         }
 
         public int ResetHealth()
         {
             health = _enemyData.GetHealthMax();
-            _healthEnemyDisplay.SetHealthDisplay(1);
+
+            GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
+
             return health;
         }
 

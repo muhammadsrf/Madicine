@@ -1,5 +1,5 @@
 using System;
-using Madicine.Scene.Gameplay.Players;
+using Madicine.Scene.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -67,11 +67,9 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             if (_enemyDeath) { return; }
 
-            if (IsAggrevated())
-            {
-                AttackBehaviour();
-            }
-            else if (_timeSinceLastSawPlayer > _suspicionTime && !IsAggrevated())
+            MoveBehaviour();
+            
+            if (_timeSinceLastSawPlayer > _suspicionTime && !IsAggrevated())
             {
                 SuspicionBehaviour();
             }
@@ -85,7 +83,7 @@ namespace Madicine.Scene.Gameplay.Enemy
             UpdateTimers();
         }
 
-        private void AttackBehaviour()
+        private void MoveBehaviour()
         {
             _timeSinceAggrevated = 0;
             _timeSinceLastSawPlayer = 0;
@@ -97,8 +95,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         private bool IsAggrevated()
         {
             float distanceToPlayer = Vector3.Distance(_player.transform.position, transform.position);
-            // return distanceToPlayer < _chaseDistance;
-            return true;
+            return distanceToPlayer < _chaseDistance;
         }
 
         private float CheckDistanceToPlayer()

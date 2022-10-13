@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Madicine.Scene.Gameplay.Players
+namespace Madicine.Scene.Gameplay.Player
 {
     [CreateAssetMenu(fileName = "Playerdata", menuName = "Player/Data", order = 0)]
     public class PlayerDataSO : ScriptableObject

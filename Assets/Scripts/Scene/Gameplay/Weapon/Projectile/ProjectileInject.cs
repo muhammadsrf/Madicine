@@ -34,9 +34,9 @@ namespace Madicine.Scene.Gameplay.Weapons
             if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 other.GetComponent<HealthEnemy>().SubtractHealth(_damage);
+                DestroyProjectile();
             }
         }
-
     }
 
 }

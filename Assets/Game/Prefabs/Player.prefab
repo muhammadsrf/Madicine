@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 8394315904679905072}
   - component: {fileID: 8394315904679905075}
   - component: {fileID: 8394315904679905074}
+  - component: {fileID: 4188538379460495625}
+  - component: {fileID: 1996134152710367266}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -241,6 +243,32 @@ MonoBehaviour:
   _nozelWeapon: {fileID: 7840848845707690381}
   _dataplayerSO: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
   _weaponController: {fileID: 1530776971737935496}
+--- !u!114 &4188538379460495625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394315904679905085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01dba46f17ccde4458eb55b75afecaa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1996134152710367266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394315904679905085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef8060f3d8b5eb4ab4400841fc721b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  _playerData: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
 --- !u!1 &9077517050650791280
 GameObject:
   m_ObjectHideFlags: 0

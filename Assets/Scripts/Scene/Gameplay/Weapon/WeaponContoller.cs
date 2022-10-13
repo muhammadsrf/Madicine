@@ -23,6 +23,18 @@ namespace Madicine.Scene.Gameplay.Weapons
             }
         }
 
+        public void SelectWeapon()
+        {
+            if (_seletedWeapon == 0)
+            {
+                _seletedWeapon = 1;
+            }
+            else if (_seletedWeapon == 1)
+            {
+                _seletedWeapon = 0;
+            }
+        }
+
         public void SelectWeapon(int i)
         {
             _seletedWeapon = i;

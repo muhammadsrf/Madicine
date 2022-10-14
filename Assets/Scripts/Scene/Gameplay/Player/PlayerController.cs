@@ -78,12 +78,18 @@ namespace Madicine.Scene.Gameplay.Player
             }
             _controller.Move(_currentMovement);
 
-            if(_currentMovement == Vector3.zero){
-                Debug.Log("berhenti");
-                animator.SetBool("dash", false);
-            }else if(_currentMovement != Vector3.zero){
-                Debug.Log("jalan");
-                animator.SetBool("dash", true);
+            // if(_currentMovement == Vector3.zero){
+            //     animator.SetBool("walk", false);
+            // }else if(_currentMovement != Vector3.zero){
+            //     animator.SetBool("walk", true);
+            // }
+            if (_currentMovement.x != 0 || _currentMovement.z != 0)
+            {
+                animator.SetBool("walk", true);
+            }
+            else if (_currentMovement.x == 0 && _currentMovement.z == 0)
+            {
+                animator.SetBool("walk", false);
             }
         }
 

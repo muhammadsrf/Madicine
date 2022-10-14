@@ -1,9 +1,12 @@
 using UnityEngine;
+using Madicine.Scene.Gameplay.Enemy;
 
 namespace Madicine.Scene.Gameplay.Weapons
 {
     public class ProjectileSpray : BaseProjectile
     {
+        [SerializeField] private float _speed;
+        [SerializeField] private int _damage = 10;
         private float _timing = 2f;
 
         private void Update()
@@ -15,9 +18,20 @@ namespace Madicine.Scene.Gameplay.Weapons
             }
             else { _timing -= Time.deltaTime; }
         }
-        private void Start()
+
+        private void FixedUpdate()
         {
-            _rg.AddForce(transform.up * 3f, ForceMode.VelocityChange);
+            _rg.AddForce(transform.up * _speed, ForceMode.Impulse);
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                other.GetComponent<HealthEnemy>().SubtractHealth(_damage);
+                DestroyProjectile();
+            }
         }
     }
 

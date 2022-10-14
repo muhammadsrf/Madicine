@@ -130,3 +130,5 @@ MonoBehaviour:
   amountToPool: 10
   objectToPool: {fileID: 5181390528752311597}
   _rg: {fileID: 5258798176038452685}
+  _speed: 3
+  _damage: 10

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 using Madicine.Scene.Gameplay.Weapons;
 
 namespace Madicine.Scene.Gameplay.Player
@@ -37,6 +38,11 @@ namespace Madicine.Scene.Gameplay.Player
         //animasi 
         Animator animator;
 
+        //shoot
+        [SerializeField] private float _fireRate;
+        private bool _allowfire = true;
+        private bool _inFire;
+
         private void Awake() {
             _mainCamera = Camera.main;
             _userInput = new UserInput();
@@ -56,7 +62,10 @@ namespace Madicine.Scene.Gameplay.Player
 
         private void Update()
         {
-            _userInput.PlayerMove.Attact.performed += (ctx) => Shoot();
+            _userInput.PlayerMove.Attact.performed += (ctx) => _inFire = true;
+            _userInput.PlayerMove.Attact.canceled   += (ctx) => _inFire = false;
+            StartCoroutine(Shoot());
+
             _userInput.PlayerMove.Dash.performed += (ctx) => _currentDashTime = 0;
             _userInput.PlayerMove.Enable();
             _userInput.PlayerMove.Move.performed += (ctx) => _input = ctx.ReadValue<Vector3>();
@@ -78,11 +87,6 @@ namespace Madicine.Scene.Gameplay.Player
             }
             _controller.Move(_currentMovement);
 
-            // if(_currentMovement == Vector3.zero){
-            //     animator.SetBool("walk", false);
-            // }else if(_currentMovement != Vector3.zero){
-            //     animator.SetBool("walk", true);
-            // }
             if (_currentMovement.x != 0 || _currentMovement.z != 0)
             {
                 animator.SetBool("walk", true);
@@ -131,9 +135,15 @@ namespace Madicine.Scene.Gameplay.Player
             }
         }
 
-        private void Shoot()
+        IEnumerator  Shoot()
         {
-            _weaponController.Shoot(_nozelWeapon.transform);
+            if (_allowfire && _inFire)
+            {
+                _allowfire = false;
+                _weaponController.Shoot(_nozelWeapon.transform);
+                yield return new WaitForSeconds( _fireRate );
+                _allowfire = true;
+            }
         }
 
         public void SubtractHealth(int demage)

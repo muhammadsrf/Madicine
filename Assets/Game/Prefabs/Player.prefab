@@ -246,6 +246,7 @@ MonoBehaviour:
   _weaponController: {fileID: 1530776971737935496}
   _dashDistance: 3
   _dashSpeed: 6
+  _fireRate: 0.2
 --- !u!114 &4188538379460495625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,22 +346,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8394315904679905079}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6407592
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.9366666
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6407592
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd9a9cd7822628847bf5163c9cee386c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -404,6 +389,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cd9a9cd7822628847bf5163c9cee386c, type: 3}
       propertyPath: m_Name
       value: Hazmat_FullAnimasi
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6407592
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9366666
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6407592
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1f166553b1d95d146a9792c465888ad9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: cd9a9cd7822628847bf5163c9cee386c, type: 3}

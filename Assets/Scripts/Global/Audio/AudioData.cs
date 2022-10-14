@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
-public class AudioData : MonoBehaviour
+namespace Madicine.Global.Audio
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu]
+    [System.Serializable]
+    public class AudioData : ScriptableObject
     {
-        
-    }
+        [System.Serializable]
+        public struct Bgm
+        {
+            public string BgmName;
+            public AudioClip Clip;
+        }
+        [System.Serializable]
+        public struct Sound
+        {
+            public string SoundName;
+            public AudioClip Clip;
+            [Range(0f, 1f)] public float Volume;
+            public bool isLoop;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public List<Bgm> BgmList;
+        public bool IsBgmMuted;
+        public List<Sound> SoundList;
+        public bool IsSoundsMuted;
+        [Range(0f, 1f)] public float Volume;
     }
 }

@@ -44,6 +44,15 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d79a4b2-fb69-4a4b-a703-21a072260e5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -103,39 +112,6 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Dash"",
-                    ""id"": ""c215a0dd-c6f9-40c5-b6b3-48b39b676146"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""5c6e7359-b247-4a83-848a-74fa96fe7c70"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""9504e4c6-d0ee-4634-be71-85de238ddbb3"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""6f596f6b-86ee-4e9f-887a-e5f6c6f1841f"",
                     ""path"": ""<Mouse>/leftButton"",
@@ -143,6 +119,17 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""move"",
                     ""action"": ""Attact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea3c7baf-c6aa-4650-9260-23d7e3f16753"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -172,6 +159,7 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
         m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
         m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
         m_PlayerMove_Attact = m_PlayerMove.FindAction("Attact", throwIfNotFound: true);
+        m_PlayerMove_Dash = m_PlayerMove.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,12 +221,14 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
     private IPlayerMoveActions m_PlayerMoveActionsCallbackInterface;
     private readonly InputAction m_PlayerMove_Move;
     private readonly InputAction m_PlayerMove_Attact;
+    private readonly InputAction m_PlayerMove_Dash;
     public struct PlayerMoveActions
     {
         private @UserInput m_Wrapper;
         public PlayerMoveActions(@UserInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMove_Move;
         public InputAction @Attact => m_Wrapper.m_PlayerMove_Attact;
+        public InputAction @Dash => m_Wrapper.m_PlayerMove_Dash;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMove; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -254,6 +244,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 @Attact.started -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
                 @Attact.performed -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
                 @Attact.canceled -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnAttact;
+                @Dash.started -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerMoveActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PlayerMoveActionsCallbackInterface = instance;
             if (instance != null)
@@ -264,6 +257,9 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
                 @Attact.started += instance.OnAttact;
                 @Attact.performed += instance.OnAttact;
                 @Attact.canceled += instance.OnAttact;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -281,5 +277,6 @@ public partial class @UserInput : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttact(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

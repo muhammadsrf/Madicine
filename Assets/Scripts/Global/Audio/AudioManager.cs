@@ -1,3 +1,4 @@
+using Madicine.Scene.MainMenu;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,24 +27,35 @@ namespace Madicine.Global.Audio
             }
         }
 
+        private void Start()
+        {
+            Init();
+        }
+
         private void OnEnable()
         {
-
+            MainMenu.OnMainMenu += OnMainMenu;
         }
 
         private void OnDisable()
         {
+            MainMenu.OnMainMenu -= OnMainMenu;
+        }
 
+        private void Init()
+        {
+            _isBgmMute = _audioData.IsBgmMuted;
+            _isSoundMute = _audioData.IsSoundsMuted;
         }
 
         private void SetCurrentBgmClip(string clip)
         {
-            for (int i = 0; i < _audioData.Bgm.Count; i++)
+            for (int i = 0; i < _audioData.BgmList.Count; i++)
             {
-                var soundName = _audioData.Bgm[i].SoundName;
+                var soundName = _audioData.BgmList[i].BgmName;
                 if (soundName == clip)
                 {
-                    var currentClip = _audioData.Bgm[i].CLip;
+                    var currentClip = _audioData.BgmList[i].Clip;
                     _bgmSource.clip = currentClip;
                     if (!_isBgmMute)
                     {
@@ -60,12 +72,13 @@ namespace Madicine.Global.Audio
 
         private void SetCurrentSoundFXClip(string clip)
         {
-            for (int i = 0; i < _audioData.SoundFX.Count; i++)
+            for (int i = 0; i < _audioData.SoundList.Count; i++)
             {
-                var soundName = _audioData.SoundFX[i].SoundName;
+                var soundName = _audioData.SoundList[i].SoundName;
                 if (soundName == clip)
                 {
-                    _soundFXSource.clip = _audioData.SoundFX[i].clip;
+                    _soundFXSource.clip = _audioData.SoundList[i].Clip;
+                    _soundFXSource.volume = _audioData.Volume * _audioData.SoundList[i].Volume;
                     if (!_isSoundMute)
                     {
                         _soundFXSource.Play();
@@ -80,12 +93,13 @@ namespace Madicine.Global.Audio
 
         private void OnMainMenu()
         {
-
+            Debug.Log("Play BGM MainMenu");
+            //SetCurrentBgmClip("MainMenu");
         }
 
         private void OnGameplay()
         {
-
+            SetCurrentBgmClip("OnGameplay");
         }
 
         private void OnPlayerMove()

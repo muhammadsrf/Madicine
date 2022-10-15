@@ -1,18 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+namespace Madicine.Scene.MainMenu
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainMenu : MonoBehaviour
     {
-        
-    }
+        public static UnityAction OnMainMenu;
+        [SerializeField] private GameObject _settingPopup;
+        [SerializeField] private GameObject _creditPopup;
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _creditButton;
+        [SerializeField] private Button _optionButton;
+        [SerializeField] private Button _exitButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            OnMainMenu?.Invoke();
+            _optionButton.onClick.AddListener(SettingPopup);
+        }
+
+        private void SettingPopup()
+        {
+            _settingPopup.SetActive(true);
+        }
+
+        private void CreditPopup()
+        {
+
+        }
+
+        private void ExitPopup()
+        {
+
+        }
     }
 }

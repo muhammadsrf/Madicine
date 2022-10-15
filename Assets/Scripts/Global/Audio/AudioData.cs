@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 namespace Madicine.Global.Audio
 {
@@ -8,22 +10,24 @@ namespace Madicine.Global.Audio
     public class AudioData : ScriptableObject
     {
         [System.Serializable]
-        public struct BackgroundMusic
+        public struct Bgm
         {
-            public string SoundName;
-            public AudioClip CLip;
-            public bool IsLOop;
+            public string BgmName;
+            public AudioClip Clip;
         }
-        public struct Sounds
+        [System.Serializable]
+        public struct Sound
         {
             public string SoundName;
-            public AudioClip clip;
-            public bool isLopp;
-            [Range(0f, 1f)] public float _volume;
+            public AudioClip Clip;
+            [Range(0f, 1f)] public float Volume;
+            public bool isLoop;
         }
 
-        public List<BackgroundMusic> Bgm;
-        public List<Sounds> SoundFX;
+        public List<Bgm> BgmList;
+        public bool IsBgmMuted;
+        public List<Sound> SoundList;
+        public bool IsSoundsMuted;
+        [Range(0f, 1f)] public float Volume;
     }
 }
-    

@@ -1,4 +1,5 @@
-using Madicine.Scene.Gameplay.Players;
+using System;
+using Madicine.Scene.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,12 +16,37 @@ namespace Madicine.Scene.Gameplay.Enemy
         private EnemyMovement _mover;
         private EnemyAttack _enemyAttack;
         private GameObject _player;
+        private HealthEnemy _healthEnemy;
+        private bool _enemyDeath;
         private float _timeSinceLastSawPlayer = Mathf.Infinity;
         private float _timeSinceArrivedAtWaypoint = Mathf.Infinity;
         private float _timeSinceAggrevated = Mathf.Infinity;
 
+        private void OnEnable()
+        {
+            _enemyDeath = false;
+            // listening to event death enemy
+            EnemyEvents.onEnemyDeath += this.EnemyDeath;
+        }
+
+        private void OnDisable()
+        {
+            // cancel listening to event death enemy
+            EnemyEvents.onEnemyDeath -= this.EnemyDeath;
+        }
+
+        private void EnemyDeath(int hp, HealthEnemy healthEnemy)
+        {
+            // ignoring event if call event is not from this healthEnemy object
+            if (healthEnemy != _healthEnemy) { return; }
+
+            _enemyDeath = true;
+            SpawnManager.AddToPoolObject(transform.parent.gameObject);
+        }
+
         private void Awake()
         {
+            _healthEnemy = GetComponent<HealthEnemy>();
             _mover = GetComponent<EnemyMovement>();
             _enemyAttack = GetComponent<EnemyAttack>();
             _player = GameObject.FindObjectOfType<PlayerController>().gameObject;
@@ -39,11 +65,11 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void Update()
         {
-            if (IsAggrevated())
-            {
-                AttackBehaviour();
-            }
-            else if (_timeSinceLastSawPlayer > _suspicionTime && !IsAggrevated())
+            if (_enemyDeath) { return; }
+
+            MoveBehaviour();
+            
+            if (_timeSinceLastSawPlayer > _suspicionTime && !IsAggrevated())
             {
                 SuspicionBehaviour();
             }
@@ -57,7 +83,7 @@ namespace Madicine.Scene.Gameplay.Enemy
             UpdateTimers();
         }
 
-        private void AttackBehaviour()
+        private void MoveBehaviour()
         {
             _timeSinceAggrevated = 0;
             _timeSinceLastSawPlayer = 0;

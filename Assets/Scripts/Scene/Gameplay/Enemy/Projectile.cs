@@ -1,5 +1,6 @@
 using UnityEngine;
 using ToolBox.Pools;
+using Madicine.Scene.Gameplay.Player;
 
 namespace Madicine.Scene.Gameplay.Enemy
 {
@@ -37,6 +38,15 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             _rb.velocity = Vector3.zero;
             gameObject.Release();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                other.GetComponent<HealthPlayer>().SubtractHealth(_enemyProjectile.damage);
+                ReleaseMe();
+            }
         }
     }
 }

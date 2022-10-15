@@ -9,6 +9,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private List<GameObject> _enemies;
         [SerializeField] private int _maxToSpawn;
         [SerializeField] private int _amountToPool;
+        [SerializeField] private float _timeForSpawn = 5.0f;
         [SerializeField] private Vector3 _maxPosition;
 
         [HideInInspector] public List<GameObject> _pooledEnemies;
@@ -26,7 +27,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         private void Update()
         {
             _timer += Time.deltaTime;
-            if (_timer >= 5)
+            if (_timer >= _timeForSpawn)
             {
                 Spawn();
                 _timer = 0;
@@ -88,5 +89,10 @@ namespace Madicine.Scene.Gameplay.Enemy
             }
         }
 
+        public static void AddToPoolObject(GameObject obj)
+        {
+            SpawnManager spawn = new SpawnManager();
+            spawn.AddToPool(obj);
+        }
     }
 }

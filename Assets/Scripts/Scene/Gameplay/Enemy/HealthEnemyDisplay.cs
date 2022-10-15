@@ -9,6 +9,17 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private Image _healthBarFiller;
         private Vector2 _myPosition;
         private Vector2 _playerPosition;
+        [SerializeField] private HealthEnemy _healthEnemy;
+
+        private void OnEnable()
+        {
+            EnemyEvents.onEnemyHurt += SetHealthDisplay;
+        }
+
+        private void OnDisable()
+        {
+            EnemyEvents.onEnemyHurt -= SetHealthDisplay;
+        }
 
         private void Awake()
         {
@@ -31,8 +42,13 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         }
 
-        public void SetHealthDisplay(float value)
+        private void SetHealthDisplay(int health, HealthEnemy healthScript)
         {
+            // ignoring event if call event is not from this Enemy health object
+            if (healthScript != _healthEnemy) { return; }
+
+            float value = (float)health / (float)_healthEnemy.GetEnemyData().GetHealthMax();
+
             if (value > 1)
             {
                 value = 1;

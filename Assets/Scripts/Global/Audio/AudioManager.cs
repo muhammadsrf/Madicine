@@ -1,6 +1,4 @@
 using Madicine.Scene.MainMenu;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Madicine.Global.Audio

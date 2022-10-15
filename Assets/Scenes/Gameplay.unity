@@ -39,10 +39,14 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
 =======
   m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 >>>>>>> 1b243fcc359f51d3671df03fee69a581db7aed92
+=======
+  m_IndirectSpecularColor: {r: 0.44658828, g: 0.49642313, b: 0.5748253, a: 1}
+>>>>>>> a25c8f04b6a86c63d525d8e4fc5bfc65ccf485bd
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -969,7 +973,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.15
+  m_fontSize: 47.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2713,7 +2717,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.8
+  m_fontSize: 60.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3995,6 +3999,10 @@ PrefabInstance:
     - target: {fileID: 8245809728045874961, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.2935882
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394315904679905074, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
+      propertyPath: _fireRate
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8394315904679905079, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
       propertyPath: m_RootOrder

@@ -17,13 +17,7 @@ namespace Madicine.Scene.Gameplay.Weapons
             ProjectileSpewner.SharedInstance.DestroyProjec(indexProjectile);
         }
 
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.transform.tag == "Enemy")
-            {
-                //call function to reduce enemy healt
-            }
-        }
+        
 
     }
 

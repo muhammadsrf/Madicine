@@ -12,5 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34068dd5324ce904fb72ec88f6abf1ff, type: 3}
   m_Name: AudioData
   m_EditorClassIdentifier: 
-  BgmList: []
-  SoundList: []
+  BgmList:
+  - BgmName: MainMenu
+    Clip: {fileID: 0}
+  - BgmName: Gameplay
+    Clip: {fileID: 0}
+  IsBgmMuted: 0
+  SoundList:
+  - SoundName: ButtonClick
+    Clip: {fileID: 0}
+    Volume: 0
+    isLoop: 0
+  - SoundName: 
+    Clip: {fileID: 0}
+    Volume: 0
+    isLoop: 0
+  - SoundName: 
+    Clip: {fileID: 0}
+    Volume: 0
+    isLoop: 0
+  - SoundName: 
+    Clip: {fileID: 0}
+    Volume: 0
+    isLoop: 0
+  - SoundName: 
+    Clip: {fileID: 0}
+    Volume: 0
+    isLoop: 0
+  IsSoundsMuted: 1
+  Volume: 0.6017182

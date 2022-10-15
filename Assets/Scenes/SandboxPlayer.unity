@@ -448,6 +448,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8394315904679905079, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
   m_PrefabInstance: {fileID: 588011092}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9461e122020428b189e9684cfb7084f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1021235342
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +673,7 @@ Transform:
   m_LocalScale: {x: 0.64502597, y: 2.2737, z: 2.2737}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 58.084}
 --- !u!1001 &1391003012
 PrefabInstance:
@@ -834,7 +840,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 298603260808563506, guid: 5dccaf5e4a613df4897abae3bc5e79fe, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 298603260808563506, guid: 5dccaf5e4a613df4897abae3bc5e79fe, type: 3}
       propertyPath: m_LocalPosition.x

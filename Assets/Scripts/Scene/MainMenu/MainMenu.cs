@@ -11,15 +11,20 @@ namespace Madicine.Scene.MainMenu
         public static UnityAction OnMainMenu;
         [SerializeField] private GameObject _settingPopup;
         [SerializeField] private GameObject _creditPopup;
+        [SerializeField] private GameObject _confirExitPopup;
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _creditButton;
         [SerializeField] private Button _optionButton;
         [SerializeField] private Button _exitButton;
+        [SerializeField] private Button _confirExitButton;
 
         private void Start()
         {
             OnMainMenu?.Invoke();
             _optionButton.onClick.AddListener(SettingPopup);
+            _creditButton.onClick.AddListener(CreditPopup);
+            _exitButton.onClick.AddListener(ConfirExitPopup);
+            _confirExitButton.onClick.AddListener(Exit);
         }
 
         private void SettingPopup()
@@ -29,12 +34,18 @@ namespace Madicine.Scene.MainMenu
 
         private void CreditPopup()
         {
-
+            _creditPopup.SetActive(true);
         }
 
-        private void ExitPopup()
+        private void ConfirExitPopup()
         {
+            _confirExitPopup.SetActive(true);
+        }
 
+        private void Exit()
+        {
+            Debug.Log("Exit");
+            Application.Quit();
         }
     }
 }

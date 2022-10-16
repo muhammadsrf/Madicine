@@ -32,6 +32,11 @@ namespace Madicine.Global.Audio
             Init();
         }
 
+        private void FixedUpdate()
+        {
+            _bgmSource.volume = _audioData.Volume;
+        }
+
         private void OnEnable()
         {
             MainMenu.OnMainMenu += OnMainMenu;
@@ -78,7 +83,7 @@ namespace Madicine.Global.Audio
                 if (soundName == clip)
                 {
                     _soundFXSource.clip = _audioData.SoundList[i].Clip;
-                    _soundFXSource.volume = _audioData.Volume * _audioData.SoundList[i].Volume;
+                    _soundFXSource.volume = _audioData.SoundList[i].Volume * _audioData.Volume;
                     if (!_isSoundMute)
                     {
                         _soundFXSource.Play();

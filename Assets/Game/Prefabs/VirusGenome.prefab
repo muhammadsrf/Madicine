@@ -105,8 +105,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1060583812181227537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f327daea199ce0d4db4c0b13a7533973, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3468980801540459b19572c9855181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   addExp: 5
-  experienceData: {fileID: 11400000, guid: 6fece5161c6022e40a634ecc7722723a, type: 2}
+  upgradeRefData: {fileID: 11400000, guid: 6ae6049bc901aa6419b4f37340f81583, type: 2}

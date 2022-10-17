@@ -59,6 +59,16 @@ namespace Madicine.Scene.Gameplay.UI
         public void SetActiveUpgradeScreen(bool value)
         {
             _upgradeScreen.SetActive(value);
+            if (value)
+            {
+                // stop the gameplay
+                Time.timeScale = 0;
+            }
+            else if (!value)
+            {
+                // resume the gameplay
+                Time.timeScale = 1;
+            }
         }
     }
 }

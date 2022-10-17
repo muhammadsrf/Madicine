@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9461e122020428b189e9684cfb7084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _temporaryDamageAtk: 0
 --- !u!114 &8892026223948829038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataplayerSO: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
-  _experienceData: {fileID: 11400000, guid: 6fece5161c6022e40a634ecc7722723a, type: 2}
+  _upgradeRefData: {fileID: 11400000, guid: 6ae6049bc901aa6419b4f37340f81583, type: 2}
   _transformModel: {fileID: 8394315904679905079}
   _speed: 5
   _nozelWeapon: {fileID: 7840848845707690381}

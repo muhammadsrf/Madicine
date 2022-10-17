@@ -33,6 +33,11 @@ namespace Madicine.Scene.Gameplay.Weapons
                 DestroyProjectile();
             }
         }
+
+        public void SetDamage(int newDamage)
+        {
+            _damage = newDamage;
+        }
     }
 
 }

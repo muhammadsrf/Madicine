@@ -1,5 +1,4 @@
 using UnityEngine;
-using Madicine.Scene.Gameplay.Experience;
 
 namespace Madicine.Scene.Gameplay.Player
 {

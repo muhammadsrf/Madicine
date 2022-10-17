@@ -2,16 +2,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using Madicine.Scene.Gameplay.Weapons;
-using Madicine.Scene.Gameplay.Experience;
+using Madicine.Global.Upgrade;
 
 namespace Madicine.Scene.Gameplay.Player
 {
+    [DefaultExecutionOrder(-11)]
     public class PlayerController : MonoBehaviour
     {
         //data player
         [Header("Base Data:")]
         [SerializeField] private PlayerDataSO _dataplayerSO;
-        [SerializeField] private ExperienceData _experienceData;
+        [SerializeField] private UpgradeReferenceData _upgradeRefData;
 
         [Header("Data Player:")]
         [SerializeField] private Transform _transformModel;
@@ -66,7 +67,7 @@ namespace Madicine.Scene.Gameplay.Player
 
         private void UpdateExperience()
         {
-            _model.experience = _experienceData.experience;
+            _model.experience = _upgradeRefData.totalExp;
         }
 
         private void Awake()
@@ -86,6 +87,7 @@ namespace Madicine.Scene.Gameplay.Player
             _model.skin = _dataplayerSO.skin;
             _model.weaponLevel = _dataplayerSO.weaponLevel;
             _maxHealth = _model.health;
+            _weaponController.TemporaryDamageAtk = _upgradeRefData.atkReference[0];
             animator = GetComponent<Animator>();
         }
 
@@ -214,5 +216,27 @@ namespace Madicine.Scene.Gameplay.Player
                 PlayerEvents.SwapWeapon();
             }
         }
+
+        /// <summary>
+        /// for upgrade hp level player
+        /// </summary>
+        public void UpgradeHealthLevel()
+        {
+            _model.level += 1;
+            _model.health = _upgradeRefData.GetHpReference(_model.level - 1);
+            _dataplayerSO.health = _model.health;
+            PlayerEvents.UpgradeChange(_model.health);
+        }
+
+        /// <summary>
+        /// for upgrade atk/weapon level player
+        /// </summary>
+        public void UpgradeAttackLevel()
+        {
+            _model.weaponLevel += 1;
+            _weaponController.TemporaryDamageAtk = _upgradeRefData.GetAtkReference(_model.weaponLevel);
+            PlayerEvents.UpgradeChange(_model.health);
+        }
+
     }
 }

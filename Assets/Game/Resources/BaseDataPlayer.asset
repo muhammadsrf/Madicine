@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7fbf8cfdc80288caaa3e8ab0222edf, type: 3}
   m_Name: BaseDataPlayer
   m_EditorClassIdentifier: 
+  _upgradeRefData: {fileID: 11400000, guid: 6ae6049bc901aa6419b4f37340f81583, type: 2}
   nameCharcter: hasnesm
-  health: 100
+  health: 120
   level: 1
   armoreLevel: 1
   weaponLevel: 1

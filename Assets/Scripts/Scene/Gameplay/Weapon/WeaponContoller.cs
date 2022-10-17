@@ -1,5 +1,4 @@
 using UnityEngine;
-using Madicine.Scene.Gameplay.Weapons;
 
 namespace Madicine.Scene.Gameplay.Weapons
 {
@@ -9,6 +8,28 @@ namespace Madicine.Scene.Gameplay.Weapons
         private string _typeProjectile;
         private string _weaponName;
         private GameObject _weapon;
+
+        // save atk damage temporary
+        [SerializeField] private int _temporaryDamageAtk;
+        public int TemporaryDamageAtk
+        {
+            set
+            {
+                if (value > 0)
+                {
+                    _temporaryDamageAtk = value;
+                }
+                else
+                {
+                    _temporaryDamageAtk = 1;
+                }
+            }
+            get
+            {
+                return _temporaryDamageAtk;
+            }
+        }
+
         public void Shoot(Transform spawner)
         {
             // this to get object in pooledObject
@@ -19,6 +40,18 @@ namespace Madicine.Scene.Gameplay.Weapons
             {
                 objects.transform.position = spawner.transform.position;
                 objects.transform.rotation = spawner.transform.rotation;
+
+                // sinchronize damage projectile with reference damage
+                if (_seletedWeapon == 0)
+                {
+                    objects.GetComponent<ProjectileInject>().SetDamage(_temporaryDamageAtk);
+                }
+                else if (_seletedWeapon == 1)
+                {
+                    objects.GetComponent<ProjectileSpray>().SetDamage(_temporaryDamageAtk);
+
+                }
+
                 objects.SetActive(true);
             }
         }
@@ -43,11 +76,6 @@ namespace Madicine.Scene.Gameplay.Weapons
         public string Get_seletedWeapon()
         {
             return _weaponName;
-        }
-
-        public void Setlevel(int newlevel)
-        {
-            _weapon.GetComponent<BaseWeapon>().level = newlevel;
         }
 
         private void Update()

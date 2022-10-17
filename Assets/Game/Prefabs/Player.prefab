@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 8394315904679905075}
   - component: {fileID: 8394315904679905074}
   - component: {fileID: 4188538379460495625}
-  - component: {fileID: 1996134152710367266}
   - component: {fileID: 5305944179610600960}
   m_Layer: 6
   m_Name: Player
@@ -221,8 +220,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCharcter: 
   health: 0
+  experience: 0
   level: 0
   armoreLevel: 0
+  weaponLevel: 0
   skin: {fileID: 0}
 --- !u!114 &8394315904679905074
 MonoBehaviour:
@@ -236,8 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb1611689ba85947bd7a4a7c0cfaf34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transformModel: {fileID: 8394315904679905079}
   _dataplayerSO: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
+  _experienceData: {fileID: 11400000, guid: 6fece5161c6022e40a634ecc7722723a, type: 2}
+  _transformModel: {fileID: 8394315904679905079}
   _speed: 5
   _nozelWeapon: {fileID: 7840848845707690381}
   _groundMask:
@@ -259,20 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01dba46f17ccde4458eb55b75afecaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1996134152710367266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8394315904679905085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ef8060f3d8b5eb4ab4400841fc721b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  _playerData: {fileID: 11400000, guid: 1584ab122824e9327a5f21ccdc92a1e2, type: 2}
 --- !u!95 &5305944179610600960
 Animator:
   serializedVersion: 3

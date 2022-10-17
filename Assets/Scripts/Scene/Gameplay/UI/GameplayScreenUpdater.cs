@@ -57,7 +57,7 @@ namespace Madicine.Scene.Gameplay.UI
             _fillHP.fillAmount = (float)health / _playerData.health;
             _hpText.text = $"HP: {health}/{_playerData.health}";
             _healthLevelNumber.text = _playerData.level.ToString();
-            _weaponLevelNumber.text = _playerData.armoreLevel.ToString();
+            _weaponLevelNumber.text = _playerData.weaponLevel.ToString();
         }
 
         private void SwapWeaponIndicator()

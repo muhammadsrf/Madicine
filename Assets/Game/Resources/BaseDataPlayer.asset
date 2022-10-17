@@ -16,4 +16,5 @@ MonoBehaviour:
   health: 100
   level: 1
   armoreLevel: 1
+  weaponLevel: 1
   skin: {fileID: 0}

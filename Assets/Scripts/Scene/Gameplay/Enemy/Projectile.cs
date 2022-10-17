@@ -44,7 +44,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                other.GetComponent<HealthPlayer>().SubtractHealth(_enemyProjectile.damage);
+                other.GetComponent<PlayerController>().SubtractHealth(_enemyProjectile.damage);
                 ReleaseMe();
             }
         }

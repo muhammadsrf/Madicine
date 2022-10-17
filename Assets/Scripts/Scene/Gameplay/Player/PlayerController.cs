@@ -2,16 +2,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using Madicine.Scene.Gameplay.Weapons;
+using Madicine.Scene.Gameplay.Experience;
 
 namespace Madicine.Scene.Gameplay.Player
 {
     public class PlayerController : MonoBehaviour
     {
-
-
         //data player
-        [SerializeField] private Transform _transformModel;
+        [Header("Base Data:")]
         [SerializeField] private PlayerDataSO _dataplayerSO;
+        [SerializeField] private ExperienceData _experienceData;
+
+        [Header("Data Player:")]
+        [SerializeField] private Transform _transformModel;
         private PlayerModel _model;
         private int _maxHealth;
         private bool _isgrounded;
@@ -22,12 +25,13 @@ namespace Madicine.Scene.Gameplay.Player
         private Vector3 _input;
 
         //control move 
+        [Header("Control Move:")]
         [SerializeField] private float _speed = 5f;
         [SerializeField] private GameObject _nozelWeapon;
         [SerializeField] private LayerMask _groundMask;
         [SerializeField] private WeaponContoller _weaponController;
         [SerializeField] private float _dashDistance = 3f;
-        [SerializeField] private float _dashSpeed = 6 ;
+        [SerializeField] private float _dashSpeed = 6;
         private Camera _mainCamera;
         private Vector3 _currentMovement;
         private CharacterController _controller;
@@ -39,11 +43,34 @@ namespace Madicine.Scene.Gameplay.Player
         Animator animator;
 
         //shoot
+        [Header("Shoot:")]
         [SerializeField] private float _fireRate;
         private bool _allowfire = true;
         private bool _inFire;
 
-        private void Awake() {
+        private void OnEnable()
+        {
+            PlayerEvents.onExpChange += UpdateExperience;
+            PlayerEvents.onPlayerDeath += OnDie;
+        }
+
+        private void OnDisable()
+        {
+            PlayerEvents.onExpChange -= UpdateExperience;
+            PlayerEvents.onPlayerDeath -= OnDie;
+        }
+
+        private void OnDie(int health)
+        {
+        }
+
+        private void UpdateExperience()
+        {
+            _model.experience = _experienceData.experience;
+        }
+
+        private void Awake()
+        {
             _mainCamera = Camera.main;
             _userInput = new UserInput();
             _controller = GetComponent<CharacterController>();
@@ -55,15 +82,17 @@ namespace Madicine.Scene.Gameplay.Player
             _model.nameCharcter = _dataplayerSO.nameCharcter;
             _model.health = _dataplayerSO.health;
             _model.level = _dataplayerSO.level;
+            _model.armoreLevel = _dataplayerSO.armoreLevel;
             _model.skin = _dataplayerSO.skin;
+            _model.weaponLevel = _dataplayerSO.weaponLevel;
             _maxHealth = _model.health;
-            animator  = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
         }
 
         private void Update()
         {
             _userInput.PlayerMove.Attact.performed += (ctx) => _inFire = true;
-            _userInput.PlayerMove.Attact.canceled   += (ctx) => _inFire = false;
+            _userInput.PlayerMove.Attact.canceled += (ctx) => _inFire = false;
             StartCoroutine(Shoot());
 
             _userInput.PlayerMove.Dash.performed += (ctx) => _currentDashTime = 0;
@@ -78,12 +107,14 @@ namespace Madicine.Scene.Gameplay.Player
 
         private void MoveTo(Vector3 vector)
         {
-            if(_currentDashTime < _maxDistance) {
-                _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _dashSpeed * _dashDistance;
-                _currentDashTime += _dashStoppingSpeed;
-            }else
+            if (_currentDashTime < _maxDistance)
             {
-                _currentMovement = new Vector3 (vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
+                _currentMovement = new Vector3(vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _dashSpeed * _dashDistance;
+                _currentDashTime += _dashStoppingSpeed;
+            }
+            else
+            {
+                _currentMovement = new Vector3(vector.x, _isgrounded ? 0.0f : -1.0f, vector.z) * Time.deltaTime * _speed;
             }
             _controller.Move(_currentMovement);
 
@@ -98,7 +129,7 @@ namespace Madicine.Scene.Gameplay.Player
         }
 
 
-        private void FaceTo( Vector3 vector)
+        private void FaceTo(Vector3 vector)
         {
             if (vector != Vector3.zero)
             {
@@ -135,24 +166,39 @@ namespace Madicine.Scene.Gameplay.Player
             }
         }
 
-        IEnumerator  Shoot()
+        IEnumerator Shoot()
         {
             if (_allowfire && _inFire)
             {
                 _allowfire = false;
                 _weaponController.Shoot(_nozelWeapon.transform);
-                yield return new WaitForSeconds( _fireRate );
+                yield return new WaitForSeconds(_fireRate);
                 _allowfire = true;
             }
         }
 
-        public void SubtractHealth(int demage)
+        public int SubtractHealth(int damage)
         {
-            _model.health -= demage;
-            if (_model.health > 1)
+            _model.health = Mathf.Max(0, _model.health - damage);
+
+            // call event trigger enemy get attack / enemy hurt
+            PlayerEvents.PlayerGetAttack(_model.health);
+
+            if (_model.health == 0)
             {
-                Debug.Log("gameover");
+                // call event trigger enemy death
+                PlayerEvents.PlayerDeath(_model.health);
             }
+            return _model.health;
+        }
+
+        public int ResetHealth()
+        {
+            _model.health = _dataplayerSO.health;
+
+            PlayerEvents.PlayerGetAttack(_model.health);
+
+            return _model.health;
         }
 
         public int GetcurrentHealth()

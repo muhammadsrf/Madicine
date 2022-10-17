@@ -7,8 +7,16 @@ namespace Madicine.Scene.Gameplay.Player
     {
         public string nameCharcter;
         public int health;
+
+        // health level
         public int level;
+        
+        // def level
         public int armoreLevel;
+
+        // weapon level
+        public int weaponLevel;
+
         public GameObject skin;
     }
 }

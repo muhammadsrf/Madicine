@@ -1,18 +1,18 @@
-using Madicine.Scene.Gameplay.Player;
+using Madicine.Global.Upgrade;
 using UnityEngine;
 
-namespace Madicine.Scene.Gameplay.Experience
+namespace Madicine.Scene.Gameplay.Enemy
 {
     public class VirusGenome : MonoBehaviour
     {
         public int addExp = 5;
-        public ExperienceData experienceData;
+        public UpgradeReferenceData upgradeRefData;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                experienceData.AddExperience(addExp);
+                upgradeRefData.AddExperience(addExp);
                 Destroy(gameObject);
             }
         }

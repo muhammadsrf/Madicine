@@ -9,6 +9,7 @@ namespace Madicine.Scene.Gameplay.Player
         // event name for delegate enemy
         public static event PlayerCombatStats onPlayerHurt;
         public static event PlayerCombatStats onPlayerDeath;
+        public static event PlayerCombatStats onUpgradeChange;
 
         public delegate void PlayerUIStats();
         public static event PlayerUIStats onWeaponChange;
@@ -27,6 +28,14 @@ namespace Madicine.Scene.Gameplay.Player
             if (onPlayerDeath != null)
             {
                 onPlayerDeath(health);
+            }
+        }
+
+        public static void UpgradeChange(int health)
+        {
+            if (onUpgradeChange != null)
+            {
+                onUpgradeChange(health);
             }
         }
 

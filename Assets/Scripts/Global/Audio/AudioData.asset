@@ -15,14 +15,9 @@ MonoBehaviour:
   BgmList:
   - BgmName: MainMenu
     Clip: {fileID: 0}
-  - BgmName: Gameplay
+  - BgmName: 
     Clip: {fileID: 0}
-  IsBgmMuted: 0
   SoundList:
-  - SoundName: ButtonClick
-    Clip: {fileID: 0}
-    Volume: 0
-    isLoop: 0
   - SoundName: 
     Clip: {fileID: 0}
     Volume: 0
@@ -39,5 +34,7 @@ MonoBehaviour:
     Clip: {fileID: 0}
     Volume: 0
     isLoop: 0
-  IsSoundsMuted: 1
-  Volume: 0.6017182
+  - SoundName: 
+    Clip: {fileID: 0}
+    Volume: 0
+    isLoop: 0

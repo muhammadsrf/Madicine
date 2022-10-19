@@ -19,6 +19,7 @@ namespace Madicine.Global.Audio
         [SerializeField] private Vector3 _offPos;
         [SerializeField] private Slider _volumeControl;
         [SerializeField] private AudioData _audioData;
+        [SerializeField] private AudioSetting _audioSetting;
         private bool _isBgmMute;
         private bool _isSoundMute;
 
@@ -31,13 +32,13 @@ namespace Madicine.Global.Audio
 
         private void FixedUpdate()
         {
-            _audioData.Volume = _volumeControl.value;
+            _audioSetting.Volume = _volumeControl.value;
         }
 
         private void Init()
         {
-            _isBgmMute = _audioData.IsBgmMuted;
-            _isSoundMute = _audioData.IsSoundsMuted;
+            _isBgmMute = _audioSetting.IsBgmMuted;
+            _isSoundMute = _audioSetting.IsSoundsMuted;
 
             if(_isBgmMute)
             {
@@ -57,18 +58,18 @@ namespace Madicine.Global.Audio
                 _soundControl.GetComponent<RectTransform>().anchoredPosition = _onPos;
             }
 
-            _volumeControl.value = _audioData.Volume;
+            _volumeControl.value = _audioSetting.Volume;
         }
 
         private void SaveVolumeValue()
         {
-            _audioData.Volume = _volumeControl.value;
+            _audioSetting.Volume = _volumeControl.value;
         }
 
         private void ToggleBgm()
         {
             _isBgmMute = !_isBgmMute;
-            _audioData.IsBgmMuted = _isBgmMute;
+            _audioSetting.IsBgmMuted = _isBgmMute;
             OnToggleBgmClick?.Invoke();
             if (_isBgmMute)
             {
@@ -84,7 +85,7 @@ namespace Madicine.Global.Audio
         private void ToggleSound()
         {
             _isSoundMute = !_isSoundMute;
-            _audioData.IsSoundsMuted = _isSoundMute;
+            _audioSetting.IsSoundsMuted = _isSoundMute;
             OnToggleSoundCLick?.Invoke();
 
             if (_isSoundMute)

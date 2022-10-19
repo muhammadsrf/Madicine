@@ -10,6 +10,7 @@ namespace Madicine.Global.Audio
         [SerializeField] private AudioSource _bgmSource;
         [SerializeField] private AudioSource _soundFXSource;
         [SerializeField] private AudioData _audioData;
+        [SerializeField] private AudioSetting _audioSetting;
         private bool _isBgmMute;
         private bool _isSoundMute;
 
@@ -34,7 +35,7 @@ namespace Madicine.Global.Audio
 
         private void FixedUpdate()
         {
-            _bgmSource.volume = _audioData.Volume;
+            _bgmSource.volume = _audioSetting.Volume;
         }
 
         private void OnEnable()
@@ -49,8 +50,8 @@ namespace Madicine.Global.Audio
 
         private void Init()
         {
-            _isBgmMute = _audioData.IsBgmMuted;
-            _isSoundMute = _audioData.IsSoundsMuted;
+            _isBgmMute = _audioSetting.IsBgmMuted;
+            _isSoundMute = _audioSetting.IsSoundsMuted;
         }
 
         private void SetCurrentBgmClip(string clip)
@@ -83,7 +84,7 @@ namespace Madicine.Global.Audio
                 if (soundName == clip)
                 {
                     _soundFXSource.clip = _audioData.SoundList[i].Clip;
-                    _soundFXSource.volume = _audioData.SoundList[i].Volume * _audioData.Volume;
+                    _soundFXSource.volume = _audioData.SoundList[i].Volume * _audioSetting.Volume;
                     if (!_isSoundMute)
                     {
                         _soundFXSource.Play();

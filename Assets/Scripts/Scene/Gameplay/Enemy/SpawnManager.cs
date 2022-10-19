@@ -72,7 +72,9 @@ namespace Madicine.Scene.Gameplay.Enemy
                 {
                     if (!_pooledEnemies[random].activeInHierarchy)
                     {
-                        _pooledEnemies[random].SetActive(true);
+                        GameObject enemy = _pooledEnemies[random];
+                        enemy.GetComponentInChildren<HealthEnemy>().ResetHealth();
+                        enemy.SetActive(true);
                         _enemyActive++;
                         break;
                     }

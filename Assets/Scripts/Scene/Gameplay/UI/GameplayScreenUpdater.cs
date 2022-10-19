@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Madicine.Scene.Gameplay.Player;
-using Madicine.Scene.Gameplay.Experience;
+using Madicine.Global.Upgrade;
 
 namespace Madicine.Scene.Gameplay.UI
 {
+    [DefaultExecutionOrder(-10)]
     public class GameplayScreenUpdater : MonoBehaviour
     {
         [SerializeField] private Image _fillHP;
@@ -16,25 +17,26 @@ namespace Madicine.Scene.Gameplay.UI
         [SerializeField] private TextMeshProUGUI _weaponLevelNumber;
         [SerializeField] private PlayerDataSO _playerData;
         [SerializeField] private GameObject[] _oneTwo;
-        [SerializeField] private ExperienceData _experienceData;
+        [SerializeField] private UpgradeReferenceData _upgradeReferenceData;
+
+        private PlayerModel _playerModel;
+
 
         private void OnEnable()
         {
             PlayerEvents.onPlayerHurt += PlayerHurt;
             PlayerEvents.onWeaponChange += SwapWeaponIndicator;
             PlayerEvents.onExpChange += ExpUpdate;
+            PlayerEvents.onUpgradeChange += UpdateLevelNumber;
         }
 
         private void ExpUpdate()
         {
-            _expText.text = $"EXP POINT: {_experienceData.experience}";
-            _fillExp.fillAmount = _experienceData.GetFillExp();
+            _expText.text = $"EXP POINT: {_upgradeReferenceData.totalExp}";
+            _fillExp.fillAmount = _upgradeReferenceData.GetFillExp();
             if (_fillExp.fillAmount == 1.0f)
             {
                 GetComponent<GameplayNavigator>().SetActiveUpgradeScreen(true);
-
-                // pause
-                Time.timeScale = 0;
             }
         }
 
@@ -43,21 +45,33 @@ namespace Madicine.Scene.Gameplay.UI
             PlayerEvents.onPlayerHurt -= PlayerHurt;
             PlayerEvents.onWeaponChange -= SwapWeaponIndicator;
             PlayerEvents.onExpChange -= ExpUpdate;
+            PlayerEvents.onUpgradeChange -= UpdateLevelNumber;
         }
 
-        private void Awake()
+        private void Start()
         {
-            _experienceData.ResetExperience();
+            _upgradeReferenceData.ResetExperience();
+            _playerModel = FindObjectOfType<PlayerModel>();
             ExpUpdate();
-            PlayerHurt(_playerData.health);
+            PlayerHurt(_playerModel.health);
         }
 
         private void PlayerHurt(int health)
         {
             _fillHP.fillAmount = (float)health / _playerData.health;
             _hpText.text = $"HP: {health}/{_playerData.health}";
-            _healthLevelNumber.text = _playerData.level.ToString();
-            _weaponLevelNumber.text = _playerData.armoreLevel.ToString();
+            _healthLevelNumber.text = _playerModel.level.ToString();
+            _weaponLevelNumber.text = _playerModel.weaponLevel.ToString();
+        }
+
+        private void UpdateLevelNumber(int health)
+        {
+            _upgradeReferenceData.ExpSetNextPoint();
+            _fillHP.fillAmount = (float)health / _playerData.health;
+            _hpText.text = $"HP: {health}/{_playerData.health}";
+            _healthLevelNumber.text = _playerModel.level.ToString();
+            _weaponLevelNumber.text = _playerModel.weaponLevel.ToString();
+            ExpUpdate();
         }
 
         private void SwapWeaponIndicator()

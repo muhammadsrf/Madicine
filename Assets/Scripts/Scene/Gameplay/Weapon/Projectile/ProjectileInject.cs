@@ -22,7 +22,6 @@ namespace Madicine.Scene.Gameplay.Weapons
         private void FixedUpdate()
         {
             _rg.AddForce(transform.up * _speed, ForceMode.Impulse);
-
         }
 
         private void Start()
@@ -36,6 +35,11 @@ namespace Madicine.Scene.Gameplay.Weapons
                 other.GetComponent<HealthEnemy>().SubtractHealth(_damage);
                 DestroyProjectile();
             }
+        }
+
+        public void SetDamage(int newDamage)
+        {
+            _damage = newDamage;
         }
     }
 

@@ -1,3 +1,4 @@
+using Madicine.Global.Character;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,6 @@ namespace Madicine.Scene.CharacterSelector
         public GameObject scrollbar;
         float scroll_pos = 0;
         float[] pos;
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
         void Update()

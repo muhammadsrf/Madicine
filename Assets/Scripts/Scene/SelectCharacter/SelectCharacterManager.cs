@@ -19,7 +19,9 @@ namespace Madicine.Scene.CharacterSelector
             for(int i = 0; i < _characterData.Characters.Count; i++)
             {
                 var obj = Instantiate(_selectCharacterController, parent: gameObject.transform);
-                obj.SetCharacterName(_characterData.Characters[i].Character_Name);
+                string characterName = _characterData.Characters[i].Character_Name;
+                int characterId = _characterData.Characters[i].Character_Id;
+                obj.SetCharacterName(characterName, characterId);
             }
         }
     }

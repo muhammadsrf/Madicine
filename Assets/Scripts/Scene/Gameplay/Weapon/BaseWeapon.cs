@@ -10,6 +10,9 @@ namespace Madicine.Scene.Gameplay.Weapons
         public int level;
         public int demage;
         public string projectileType;
+
+        public float firerate;
+
     }
 
 }

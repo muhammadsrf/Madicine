@@ -47,6 +47,7 @@ MonoBehaviour:
   level: 0
   demage: 5
   projectileType: Spray
+  firerate: 0.005
 --- !u!1 &7840848845707690381
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +250,6 @@ MonoBehaviour:
   _weaponController: {fileID: 1530776971737935496}
   _dashDistance: 3
   _dashSpeed: 6
-  _fireRate: 0.2
 --- !u!114 &4188538379460495625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +328,7 @@ MonoBehaviour:
   level: 0
   demage: 10
   projectileType: Inject
+  firerate: 2
 --- !u!1001 &3620576776973285617
 PrefabInstance:
   m_ObjectHideFlags: 0

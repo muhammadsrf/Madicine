@@ -38,8 +38,6 @@ namespace Madicine.Scene.Gameplay.Weapons
             // loop to check object
             if (objects != null)
             {
-                objects.transform.position = spawner.transform.position;
-                objects.transform.rotation = spawner.transform.rotation;
 
                 // sinchronize damage projectile with reference damage
                 if (_seletedWeapon == 0)
@@ -51,6 +49,9 @@ namespace Madicine.Scene.Gameplay.Weapons
                     objects.GetComponent<ProjectileSpray>().SetDamage(_temporaryDamageAtk);
 
                 }
+                
+                objects.transform.position = spawner.transform.position;
+                objects.transform.rotation = spawner.transform.rotation;
 
                 objects.SetActive(true);
             }
@@ -73,9 +74,9 @@ namespace Madicine.Scene.Gameplay.Weapons
             _seletedWeapon = i;
         }
 
-        public string Get_seletedWeapon()
+        public int Get_seletedWeapon()
         {
-            return _weaponName;
+            return _seletedWeapon;
         }
 
         private void Update()

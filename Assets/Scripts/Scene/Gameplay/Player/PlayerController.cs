@@ -45,7 +45,7 @@ namespace Madicine.Scene.Gameplay.Player
 
         //shoot
         [Header("Shoot:")]
-        [SerializeField] private float _fireRate;
+        private float _fireRate;
         private bool _allowfire = true;
         private bool _inFire;
 
@@ -89,6 +89,7 @@ namespace Madicine.Scene.Gameplay.Player
             _maxHealth = _model.health;
             _weaponController.TemporaryDamageAtk = _upgradeRefData.atkReference[0];
             animator = GetComponent<Animator>();
+            //_fireRate = WeaponContoller
         }
 
         private void Update()
@@ -214,6 +215,8 @@ namespace Madicine.Scene.Gameplay.Player
             {
                 _nozelWeapon.GetComponent<WeaponContoller>().SelectWeapon();
                 PlayerEvents.SwapWeapon();
+                _fireRate = _nozelWeapon.transform.GetChild(_nozelWeapon.GetComponent<WeaponContoller>().Get_seletedWeapon())
+                    .GetComponent<BaseWeapon>().firerate;
             }
         }
 

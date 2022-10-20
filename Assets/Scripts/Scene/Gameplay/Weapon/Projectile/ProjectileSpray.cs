@@ -7,20 +7,30 @@ namespace Madicine.Scene.Gameplay.Weapons
     {
         [SerializeField] private float _speed;
         [SerializeField] private int _damage = 10;
-        private float _timing = 2f;
+        private float _timing = 0.3f;
+        [SerializeField] private Vector3 _baseScale;
+        private Vector3 _updateScale;
 
         private void Update()
         {
             if (_timing < 0)
             {
+                _updateScale = _baseScale;
+                _timing = 0.3f;
                 DestroyProjectile();
-                _timing = 2f;
             }
             else { _timing -= Time.deltaTime; }
         }
 
+        private void Start() {
+            _updateScale = _baseScale;
+        }
+
         private void FixedUpdate()
         {
+            _updateScale += _updateScale * 7 *  Time.deltaTime;
+
+            _rg.transform.localScale = _updateScale;
             _rg.AddForce(transform.up * _speed, ForceMode.Impulse);
 
         }

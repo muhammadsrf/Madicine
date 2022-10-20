@@ -8,8 +8,8 @@ namespace Madicine.Global.Audio
 {
     public class AudioButtonSetting : MonoBehaviour
     {
-        public static UnityEvent OnToggleBgmClick;
-        public static UnityEvent OnToggleSoundCLick;
+        public static UnityAction<bool> OnToggleBgmClick;
+        public static UnityAction<bool> OnToggleSoundCLick;
 
         [SerializeField] private Button _bgmButton;
         [SerializeField] private Button _soundButton;
@@ -70,7 +70,7 @@ namespace Madicine.Global.Audio
         {
             _isBgmMute = !_isBgmMute;
             _audioSetting.IsBgmMuted = _isBgmMute;
-            OnToggleBgmClick?.Invoke();
+            OnToggleBgmClick?.Invoke(_isBgmMute);
             if (_isBgmMute)
             {
                 _bgmControl.GetComponent<RectTransform>().anchoredPosition = _offPos;
@@ -86,7 +86,7 @@ namespace Madicine.Global.Audio
         {
             _isSoundMute = !_isSoundMute;
             _audioSetting.IsSoundsMuted = _isSoundMute;
-            OnToggleSoundCLick?.Invoke();
+            OnToggleSoundCLick?.Invoke(_isSoundMute);
 
             if (_isSoundMute)
             {

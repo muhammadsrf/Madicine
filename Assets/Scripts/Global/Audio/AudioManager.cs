@@ -1,3 +1,4 @@
+using Madicine.Scene.Gameplay;
 using Madicine.Scene.MainMenu;
 using UnityEngine;
 
@@ -39,11 +40,13 @@ namespace Madicine.Global.Audio
         private void OnEnable()
         {
             MainMenu.OnMainMenu += OnMainMenu;
+            GameplayScene.OnGameplay += OnGameplay;
         }
 
         private void OnDisable()
         {
             MainMenu.OnMainMenu -= OnMainMenu;
+            GameplayScene.OnGameplay -= OnGameplay;
         }
 
         private void Init()
@@ -97,13 +100,13 @@ namespace Madicine.Global.Audio
 
         private void OnMainMenu()
         {
-            Debug.Log("Play BGM MainMenu");
-            //SetCurrentBgmClip("MainMenu");
+            SetCurrentBgmClip("MainMenu");
         }
 
         private void OnGameplay()
         {
-            SetCurrentBgmClip("OnGameplay");
+            SetCurrentBgmClip("Gameplay");
+            Debug.Log("on gameplay");
         }
 
         private void OnPlayerMove()

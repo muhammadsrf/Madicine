@@ -48,6 +48,7 @@ namespace Madicine.Scene.Gameplay.Player
         [SerializeField] private float _fireRate;
         private bool _allowfire = true;
         private bool _inFire;
+        private bool _aimOn = true;
 
         private void OnEnable()
         {
@@ -63,6 +64,9 @@ namespace Madicine.Scene.Gameplay.Player
 
         private void OnDie(int health)
         {
+            _aimOn = false;
+            Debug.Log("death");
+            animator.SetBool("death", true);
         }
 
         private void UpdateExperience()
@@ -143,13 +147,16 @@ namespace Madicine.Scene.Gameplay.Player
 
         private void Aim()
         {
-            var (success, position) = GetMousePosition();
-            if (success)
+            if (_aimOn)
             {
-                var direction = position - transform.position;
-                direction.y = 0;
+                var (success, position) = GetMousePosition();
+                if (success)
+                {
+                    var direction = position - transform.position;
+                    direction.y = 0;
 
-                transform.forward = direction;
+                    transform.forward = direction;
+                }
             }
         }
 
@@ -188,6 +195,7 @@ namespace Madicine.Scene.Gameplay.Player
 
             if (_model.health == 0)
             {
+                // harus ada delay sebelum code dibawah di 
                 // call event trigger enemy death
                 PlayerEvents.PlayerDeath(_model.health);
             }

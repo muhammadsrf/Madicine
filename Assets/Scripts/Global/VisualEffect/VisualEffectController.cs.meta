@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 7374a47754495f1b7910017760a4a50d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - resourceListVFX: {fileID: 11400000, guid: a8a78ad84f41a31f19c4d5c64e44fc22, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

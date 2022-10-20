@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsBgmMuted: 0
   IsSoundsMuted: 0
-  Volume: 0
+  Volume: 1

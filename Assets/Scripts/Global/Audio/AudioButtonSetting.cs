@@ -8,8 +8,8 @@ namespace Madicine.Global.Audio
 {
     public class AudioButtonSetting : MonoBehaviour
     {
-        public static UnityEvent OnToggleBgmClick;
-        public static UnityEvent OnToggleSoundCLick;
+        public static UnityAction<bool> OnToggleBgmClick;
+        public static UnityAction<bool> OnToggleSoundCLick;
 
         [SerializeField] private Button _bgmButton;
         [SerializeField] private Button _soundButton;
@@ -19,6 +19,7 @@ namespace Madicine.Global.Audio
         [SerializeField] private Vector3 _offPos;
         [SerializeField] private Slider _volumeControl;
         [SerializeField] private AudioData _audioData;
+        [SerializeField] private AudioSetting _audioSetting;
         private bool _isBgmMute;
         private bool _isSoundMute;
 
@@ -31,13 +32,13 @@ namespace Madicine.Global.Audio
 
         private void FixedUpdate()
         {
-            _audioData.Volume = _volumeControl.value;
+            _audioSetting.Volume = _volumeControl.value;
         }
 
         private void Init()
         {
-            _isBgmMute = _audioData.IsBgmMuted;
-            _isSoundMute = _audioData.IsSoundsMuted;
+            _isBgmMute = _audioSetting.IsBgmMuted;
+            _isSoundMute = _audioSetting.IsSoundsMuted;
 
             if(_isBgmMute)
             {
@@ -57,19 +58,19 @@ namespace Madicine.Global.Audio
                 _soundControl.GetComponent<RectTransform>().anchoredPosition = _onPos;
             }
 
-            _volumeControl.value = _audioData.Volume;
+            _volumeControl.value = _audioSetting.Volume;
         }
 
         private void SaveVolumeValue()
         {
-            _audioData.Volume = _volumeControl.value;
+            _audioSetting.Volume = _volumeControl.value;
         }
 
         private void ToggleBgm()
         {
             _isBgmMute = !_isBgmMute;
-            _audioData.IsBgmMuted = _isBgmMute;
-            OnToggleBgmClick?.Invoke();
+            _audioSetting.IsBgmMuted = _isBgmMute;
+            OnToggleBgmClick?.Invoke(_isBgmMute);
             if (_isBgmMute)
             {
                 _bgmControl.GetComponent<RectTransform>().anchoredPosition = _offPos;
@@ -84,8 +85,8 @@ namespace Madicine.Global.Audio
         private void ToggleSound()
         {
             _isSoundMute = !_isSoundMute;
-            _audioData.IsSoundsMuted = _isSoundMute;
-            OnToggleSoundCLick?.Invoke();
+            _audioSetting.IsSoundsMuted = _isSoundMute;
+            OnToggleSoundCLick?.Invoke(_isSoundMute);
 
             if (_isSoundMute)
             {

@@ -37,7 +37,7 @@ namespace Madicine.Global.Vfx
             }
 
             if (spawnObject !=null) spawnObject = Object.Instantiate(spawnObject, transf);
-            Object.Destroy(spawnObject, 3f);
+            Object.Destroy(spawnObject, 0.5f);
         }
     }
 }

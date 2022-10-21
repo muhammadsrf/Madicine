@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 7817139050297991835}
   - component: {fileID: 7817139050297991839}
   - component: {fileID: 7817139050297991836}
+  - component: {fileID: 1781682285017807509}
   m_Layer: 5
   m_Name: UI Gameplay
   m_TagString: Untagged
@@ -1064,6 +1065,19 @@ MonoBehaviour:
   - {fileID: 7817139051416268364}
   - {fileID: 7817139050114456304}
   _upgradeReferenceData: {fileID: 11400000, guid: 6ae6049bc901aa6419b4f37340f81583, type: 2}
+--- !u!114 &1781682285017807509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817139050297991834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7374a47754495f1b7910017760a4a50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceListVFX: {fileID: 11400000, guid: a8a78ad84f41a31f19c4d5c64e44fc22, type: 2}
 --- !u!1 &7817139050337749872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,7 +2822,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.15
+  m_fontSize: 46.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3147,7 +3161,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.8
+  m_fontSize: 60.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

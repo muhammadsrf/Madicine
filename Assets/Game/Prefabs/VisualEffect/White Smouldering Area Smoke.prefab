@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 445030}
   - component: {fileID: 19897242}
   - component: {fileID: 19980624}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: White Smouldering Area Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 1
+    enabled: 0
     type: 4
     angle: 80
     length: 5

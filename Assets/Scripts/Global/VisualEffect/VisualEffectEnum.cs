@@ -3,8 +3,11 @@ namespace Madicine.Global.Vfx
 {
     public enum VisualEffectEnum{
         Spray,
-        Enemy,
         Inject,
+        HitEnemy,
+        EnemyHeal,
+        EnemyDisappear,
+        EnemyShoot,
     }
     
 }

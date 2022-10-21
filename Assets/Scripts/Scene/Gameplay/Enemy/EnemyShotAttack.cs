@@ -1,5 +1,6 @@
 using UnityEngine;
 using Madicine.Global.EnemyData;
+using Madicine.Global.Vfx;
 
 namespace Madicine.Scene.Gameplay.Enemy
 {
@@ -40,6 +41,7 @@ namespace Madicine.Scene.Gameplay.Enemy
             {
                 if (ShotProjectileManajer.instance)
                 {
+                    VisualEffectController.Instance.SpawnVFX(VisualEffectEnum.EnemyShoot, transform);
                     ShotProjectileManajer.instance.Shot(transform.position);
                     _isAttack = false;
                 }

@@ -13,6 +13,7 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private Animator _animator;
         private Collider _colliderenemy;
+        private bool _healthNull;
 
         private void Awake()
         {

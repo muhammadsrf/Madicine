@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +5,38 @@ namespace Madicine.Scene.Gameplay.Enemy
 {
     public class SpawnManager : MonoBehaviour
     {
+        /* not used temporary
+        [SerializeField] private int _maxToSpawn;        
+        // [SerializeField] private int _amountToPool;
+        // [SerializeField] private float _timeForSpawn = 5.0f;
+        // Please dont delete this */
+
+        [Header("Enemy Prefabs List:")]
         [SerializeField] private List<GameObject> _enemies;
-        [SerializeField] private int _maxToSpawn;
-        [SerializeField] private int _amountToPool;
-        [SerializeField] private float _timeForSpawn = 5.0f;
-        [SerializeField] private Vector3 _maxPosition;
+        [SerializeField] private List<Transform> _listTransform = new List<Transform>();
+        [Header("Spawn Information:")]
+        [SerializeField] private int _currentWave = 1;
+        public List<WaveClass> listWaveEnemy = new List<WaveClass>();
+        public int countSpawn;
+        public bool canSpawn;
+
+        private Dictionary<int, Vector3> _disPosition = new Dictionary<int, Vector3>();
 
         [HideInInspector] public List<GameObject> _pooledEnemies;
 
         private int _enemyActive;
         private float _timer;
+
+        private void Awake()
+        {
+            // create dictionary for list position
+            int key = 0;
+            foreach (var item in _listTransform)
+            {
+                _disPosition.Add(key, item.position);
+                key++;
+            }
+        }
 
         private void Start()
         {
@@ -27,33 +48,104 @@ namespace Madicine.Scene.Gameplay.Enemy
         private void Update()
         {
             _timer += Time.deltaTime;
-            if (_timer >= _timeForSpawn)
+
+            if (canSpawn)
             {
-                Spawn();
-                _timer = 0;
+                if (_timer >= GetTimeSpawn())
+                {
+                    Spawn();
+                    _timer = 0;
+                }
+            }
+            else if (!canSpawn)
+            {
+                // add +1 to current wave
+                if (countSpawn == 0)
+                {
+                    _currentWave++;
+                    DestroyAllInstance();
+                    SpawnInit();
+                    canSpawn = true;
+                }
             }
         }
 
         private void OnEnable()
         {
-            //subscribe event enemy hit, add enemy to pool
+            EnemyEvents.onEnemyDeath += ReleaseOneEnemy;
+        }
+
+        private void ReleaseOneEnemy(int health, HealthEnemy healthScript)
+        {
+            AddToPool(healthScript.transform.parent.gameObject);
+            if (!canSpawn)
+            {
+                countSpawn--;
+            }
         }
 
         private void OnDisable()
         {
-            //unsubscribe event enemy hit, add enemy to pool
+            EnemyEvents.onEnemyDeath -= ReleaseOneEnemy;
+        }
+
+        private int GetEnemyHP()
+        {
+            int hp = 0;
+            foreach (var item in listWaveEnemy)
+            {
+                if (item.wave == _currentWave)
+                {
+                    hp = item.hp;
+                    break;
+                }
+            }
+            return hp;
+        }
+
+        private int GetMaxSpawn()
+        {
+            int maxSpawn = 0;
+            foreach (var item in listWaveEnemy)
+            {
+                if (item.wave == _currentWave)
+                {
+                    maxSpawn = item.actualEnemy;
+                    break;
+                }
+            }
+            return maxSpawn;
+        }
+
+        private int GetTimeSpawn()
+        {
+            int timeSpawn = 0;
+            foreach (var item in listWaveEnemy)
+            {
+                if (item.wave == _currentWave)
+                {
+                    timeSpawn = item.timePerSpawn;
+                    break;
+                }
+            }
+            return timeSpawn;
         }
 
         private void SpawnInit()
         {
-            for (int i = 0; i < _amountToPool; i++)
+            for (int i = 0; i < GetMaxSpawn(); i++) // obj pool max
             {
                 for (int j = 0; j < _enemies.Count; j++)
                 {
-                    Vector3 ranPos = new Vector3(Random.Range(-_maxPosition.x, _maxPosition.x), Random.Range(-_maxPosition.y, _maxPosition.y), Random.Range(-_maxPosition.z, _maxPosition.z));
-                    var tmp = Instantiate(_enemies[j], ranPos, Quaternion.identity);
+                    int randomValue = Random.Range(0, _disPosition.Count - 1);
+                    bool checkValue = _disPosition.TryGetValue(randomValue, out Vector3 positionSpawn);
+
+                    if (!checkValue) { continue; }
+
+                    var tmp = Instantiate(_enemies[j], positionSpawn, Quaternion.identity);
                     tmp.transform.SetParent(this.transform);
                     _pooledEnemies.Add(tmp);
+
                     if (tmp.activeInHierarchy)
                     {
                         tmp.SetActive(false);
@@ -65,17 +157,28 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void Spawn()
         {
-            for (int i = 0; i < _pooledEnemies.Count; i++)
+            for (int i = 0; i < GetMaxSpawn(); i++) // obj pool max
             {
-                int random = Random.Range(0, _pooledEnemies.Count);
-                if (_enemyActive <= _maxToSpawn)
+                int random = Random.Range(0, GetMaxSpawn());
+                if (_enemyActive <= GetMaxSpawn())
                 {
                     if (!_pooledEnemies[random].activeInHierarchy)
                     {
                         GameObject enemy = _pooledEnemies[random];
-                        enemy.GetComponentInChildren<HealthEnemy>().ResetHealth();
+
+                        // set hp to default reference
+                        enemy.GetComponentInChildren<HealthEnemy>().GetEnemyData().SetHealthMax(GetEnemyHP());
+                        enemy.GetComponentInChildren<HealthEnemy>().ResetHealth(GetEnemyHP());
+
                         enemy.SetActive(true);
                         _enemyActive++;
+                        countSpawn++;
+
+                        if (countSpawn == GetMaxSpawn())
+                        {
+                            canSpawn = false;
+                        }
+
                         break;
                     }
                 }
@@ -91,10 +194,15 @@ namespace Madicine.Scene.Gameplay.Enemy
             }
         }
 
-        public static void AddToPoolObject(GameObject obj)
+        private void DestroyAllInstance()
         {
-            SpawnManager spawn = new SpawnManager();
-            spawn.AddToPool(obj);
+            foreach (var item in _pooledEnemies)
+            {
+                Destroy(item);
+            }
+
+            _pooledEnemies.Clear();
+            _enemyActive = 0;
         }
     }
 }

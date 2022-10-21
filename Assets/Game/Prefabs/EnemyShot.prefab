@@ -166,6 +166,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShot
       objectReference: {fileID: 0}
+    - target: {fileID: 2727863376267061632, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: _durationAttack
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727863376267061634, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: _maxSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2727863376267061636, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -180,10 +188,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6662455693130935619, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+    - {fileID: 4990548919154949812, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+    - {fileID: 2727863376267061632, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+--- !u!1 &7107965676507868410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2727863376267061638, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+  m_PrefabInstance: {fileID: 5152047975238305148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7107965676507868411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2727863376267061639, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+  m_PrefabInstance: {fileID: 5152047975238305148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3990551045861714732 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8079045821581962832, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
   m_PrefabInstance: {fileID: 5152047975238305148}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &7107965677128380212 stripped
@@ -191,6 +211,34 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
   m_PrefabInstance: {fileID: 5152047975238305148}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &154716342839804575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107965676507868410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4037c91c97910845ab13731c3920cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delayShotProjectile: 3
+--- !u!114 &341482415986709836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107965676507868410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061eabb039e31a74d86e896562fd1a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDistanceArea: 5
+  _speedFraction: 0.2
+  _areaChase: {fileID: 3990551045861714732}
 --- !u!1001 &6156697095339008964
 PrefabInstance:
   m_ObjectHideFlags: 0

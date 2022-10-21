@@ -25,9 +25,6 @@ namespace Madicine.Global.Audio
         }
 
         public List<Bgm> BgmList;
-        public bool IsBgmMuted;
         public List<Sound> SoundList;
-        public bool IsSoundsMuted;
-        [Range(0f, 1f)] public float Volume;
     }
 }

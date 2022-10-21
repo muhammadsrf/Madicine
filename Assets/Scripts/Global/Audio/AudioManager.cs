@@ -1,3 +1,4 @@
+using Madicine.Scene.Gameplay;
 using Madicine.Scene.MainMenu;
 using UnityEngine;
 
@@ -8,8 +9,9 @@ namespace Madicine.Global.Audio
         [SerializeField] private AudioSource _bgmSource;
         [SerializeField] private AudioSource _soundFXSource;
         [SerializeField] private AudioData _audioData;
-        private bool _isBgmMute;
-        private bool _isSoundMute;
+        [SerializeField] private AudioSetting _audioSetting;
+        public bool _isBgmMute ;
+        private bool _isSoundMute ;
 
         public static AudioManager Instance;
         private void Awake()
@@ -30,20 +32,42 @@ namespace Madicine.Global.Audio
             Init();
         }
 
+        private void FixedUpdate()
+        {
+            _bgmSource.volume = _audioSetting.Volume;
+        }
+
         private void OnEnable()
         {
             MainMenu.OnMainMenu += OnMainMenu;
+            GameplayScene.OnGameplay += OnGameplay;
+            AudioButtonSetting.OnToggleBgmClick += MuteBgm;
         }
 
         private void OnDisable()
         {
             MainMenu.OnMainMenu -= OnMainMenu;
+            GameplayScene.OnGameplay -= OnGameplay;
+            AudioButtonSetting.OnToggleBgmClick -= MuteBgm;
         }
 
         private void Init()
         {
-            _isBgmMute = _audioData.IsBgmMuted;
-            _isSoundMute = _audioData.IsSoundsMuted;
+            _isBgmMute = _audioSetting.IsBgmMuted;
+            _isSoundMute = _audioSetting.IsSoundsMuted;
+        }
+
+        private void MuteBgm(bool isBgmMute)
+        {
+            _isBgmMute = isBgmMute;
+            if(_isBgmMute == true)
+            {
+                _bgmSource.Stop();
+            }
+            else
+            {
+                _bgmSource.Play();
+            }
         }
 
         private void SetCurrentBgmClip(string clip)
@@ -55,11 +79,11 @@ namespace Madicine.Global.Audio
                 {
                     var currentClip = _audioData.BgmList[i].Clip;
                     _bgmSource.clip = currentClip;
-                    if (!_isBgmMute)
+                    if (_isBgmMute == false)
                     {
                         _bgmSource.Play();
                     }
-                    else
+                    else if(_isBgmMute == true)
                     {
                         _bgmSource.Stop();
                     }
@@ -76,7 +100,7 @@ namespace Madicine.Global.Audio
                 if (soundName == clip)
                 {
                     _soundFXSource.clip = _audioData.SoundList[i].Clip;
-                    _soundFXSource.volume = _audioData.Volume * _audioData.SoundList[i].Volume;
+                    _soundFXSource.volume = _audioData.SoundList[i].Volume * _audioSetting.Volume;
                     if (!_isSoundMute)
                     {
                         _soundFXSource.Play();
@@ -91,13 +115,13 @@ namespace Madicine.Global.Audio
 
         private void OnMainMenu()
         {
-            Debug.Log("Play BGM MainMenu");
-            //SetCurrentBgmClip("MainMenu");
+            SetCurrentBgmClip("MainMenu");
         }
 
         private void OnGameplay()
         {
-            SetCurrentBgmClip("OnGameplay");
+            SetCurrentBgmClip("Gameplay");
+            Debug.Log("on gameplay");
         }
 
         private void OnPlayerMove()

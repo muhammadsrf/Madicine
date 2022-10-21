@@ -18,17 +18,17 @@ MonoBehaviour:
   - BgmName: Gameplay
     Clip: {fileID: 8300000, guid: 80485ffc0b34c134b89fc9a54a79946a, type: 3}
   SoundList:
-  - SoundName: 
-    Clip: {fileID: 0}
-    Volume: 0
+  - SoundName: OnPlayerShoot
+    Clip: {fileID: 8300000, guid: 42e82fa85efa20243aedbc91a8181746, type: 3}
+    Volume: 1
     isLoop: 0
-  - SoundName: 
-    Clip: {fileID: 0}
-    Volume: 0
+  - SoundName: OnPowerUp
+    Clip: {fileID: 8300000, guid: e75cdacb8010fe749b5a9c2829ce5f06, type: 3}
+    Volume: 1
     isLoop: 0
-  - SoundName: 
-    Clip: {fileID: 0}
-    Volume: 0
+  - SoundName: OnWaeponChange
+    Clip: {fileID: 8300000, guid: 552ba8272cfd945489afbc61d429559f, type: 3}
+    Volume: 1
     isLoop: 0
   - SoundName: 
     Clip: {fileID: 0}

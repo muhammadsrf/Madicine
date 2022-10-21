@@ -24,7 +24,7 @@ namespace Madicine.Scene.MainMenu
             OnMainMenu?.Invoke();
             _playButton.onClick.AddListener(Play);
             _optionButton.onClick.AddListener(SettingPopup);
-            _creditButton.onClick.AddListener(CreditPopup);
+            _creditButton.onClick.AddListener(Credit);
             _exitButton.onClick.AddListener(ConfirExitPopup);
             _confirExitButton.onClick.AddListener(Exit);
         }
@@ -39,9 +39,9 @@ namespace Madicine.Scene.MainMenu
             _settingPopup.SetActive(true);
         }
 
-        private void CreditPopup()
+        private void Credit()
         {
-            _creditPopup.SetActive(true);
+            SceneManager.LoadScene("Credit");
         }
 
         private void ConfirExitPopup()

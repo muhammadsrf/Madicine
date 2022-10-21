@@ -1,4 +1,5 @@
 using UnityEngine;
+using Madicine.Global.Vfx;
 
 namespace Madicine.Scene.Gameplay.Weapons
 {
@@ -53,6 +54,12 @@ namespace Madicine.Scene.Gameplay.Weapons
                 }
 
                 objects.SetActive(true);
+                if ("Spray" == _typeProjectile){
+                    VisualEffectController.Instance.SpawnVFX(VisualEffectEnum.Spray, spawner);
+                }
+                else if("Inject" == _typeProjectile ){
+                    VisualEffectController.Instance.SpawnVFX(VisualEffectEnum.Inject, spawner);
+                }
             }
         }
 

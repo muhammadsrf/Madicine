@@ -1,5 +1,6 @@
 using Madicine.Scene.Gameplay.Player;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 namespace Madicine.Scene.Gameplay.UI
@@ -52,7 +53,13 @@ namespace Madicine.Scene.Gameplay.UI
 
         private void PlayerDie(int health)
         {
+            StartCoroutine(delay());
+        }
+
+        IEnumerator delay(){
+            yield return new WaitForSeconds(0.7f);
             _gameOverScreen.SetActive(true);
+
             Time.timeScale = 0;
         }
 

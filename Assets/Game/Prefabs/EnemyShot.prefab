@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2727863376267061634, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: _maxSpeed
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2727863376267061636, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Avatar

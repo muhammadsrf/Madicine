@@ -645,8 +645,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _areaChase: {fileID: 985123509222707255}
-  _areaDistance: 5
+  _areaDistance: 10
   _delayAreaDamage: 1
+  _damage: 10
 --- !u!114 &7758048482411309369
 MonoBehaviour:
   m_ObjectHideFlags: 0

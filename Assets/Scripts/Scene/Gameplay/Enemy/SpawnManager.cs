@@ -13,6 +13,7 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         [Header("Enemy Prefabs List:")]
         [SerializeField] private List<GameObject> _enemies;
+        [SerializeField] private GameObject _trunksMan;
         [SerializeField] private List<Transform> _listTransform = new List<Transform>();
         [Header("Spawn Information:")]
         [SerializeField] private int _currentWave = 1;
@@ -72,12 +73,19 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void OnEnable()
         {
-            EnemyEvents.onEnemyDeath += ReleaseOneEnemy;
+            EnemyEvents.onEnemyTransition += ReleaseOneEnemy;
         }
 
+        // event saat enemy disembuhkan -> transisi menjadi orang sehat
         private void ReleaseOneEnemy(int health, HealthEnemy healthScript)
         {
             AddToPool(healthScript.transform.parent.gameObject);
+            Vector3 trunksPosition = new Vector3(healthScript.transform.position.x, 0, healthScript.transform.position.z);
+
+            // spawn orang sehat
+            GameObject orangSehat = Instantiate(_trunksMan, trunksPosition, Quaternion.identity);
+            EnemyEvents.Cured();
+
             if (!canSpawn)
             {
                 countSpawn--;
@@ -86,7 +94,7 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void OnDisable()
         {
-            EnemyEvents.onEnemyDeath -= ReleaseOneEnemy;
+            EnemyEvents.onEnemyTransition -= ReleaseOneEnemy;
         }
 
         private int GetEnemyHP()

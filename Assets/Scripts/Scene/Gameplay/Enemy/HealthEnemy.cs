@@ -10,26 +10,17 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private GameObject _virusGenome;
 
         private Animator _animator;
+        private bool _healthNull;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
         }
 
-        // for test function with keyboard
-        private void Update()
-        {
-            // if (Input.GetKeyDown(KeyCode.K))
-            // {
-            //     if (SubtractHealth(10) == 0)
-            //     {
-            //         Debug.Log("Mati!");
-            //     }
-            // }
-        }
-
         public int SubtractHealth(int subtract)
         {
+            if (_healthNull) { return 0; }
+
             health = Mathf.Max(0, health - subtract);
 
             // call event trigger enemy get attack / enemy hurt
@@ -38,6 +29,8 @@ namespace Madicine.Scene.Gameplay.Enemy
             if (health == 0)
             {
                 _animator.SetTrigger("Die");
+                _healthNull = true;
+                EnemyEvents.EnemyGetDown(health, this);
 
                 // drop virus genome
                 Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
@@ -48,8 +41,9 @@ namespace Madicine.Scene.Gameplay.Enemy
         public int ResetHealth()
         {
             health = _enemyData.GetHealthMax();
+            _healthNull = false;
 
-            GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
+            // GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
 
             return health;
         }
@@ -57,6 +51,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         public int ResetHealth(int newHealth)
         {
             health = newHealth;
+            _healthNull = false;
 
             GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
 

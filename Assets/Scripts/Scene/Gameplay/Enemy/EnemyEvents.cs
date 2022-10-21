@@ -10,6 +10,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         // event name for delegate enemy
         public static event EnemyCombatStats onEnemyHurt;
         public static event EnemyCombatStats onEnemyTransition;
+        public static event EnemyCombatStats onEnemyFall;
         public static event EnemyCured onEnemyCured;
 
         public void EnemyGetAttack(int health, HealthEnemy healthScript)
@@ -30,7 +31,18 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         public static void Cured()
         {
-            onEnemyCured();
+            if (onEnemyFall != null)
+            {
+                onEnemyCured();
+            }
+        }
+
+        public static void EnemyGetDown(int health, HealthEnemy healthScript)
+        {
+            if (onEnemyFall != null)
+            {
+                onEnemyFall(health, healthScript);
+            }
         }
     }
 }

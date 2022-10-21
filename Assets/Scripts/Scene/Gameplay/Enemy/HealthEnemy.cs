@@ -9,10 +9,12 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private AttributeEnemyData _enemyData;
         [SerializeField] private GameObject _virusGenome;
 
-        // private void OnEnable()
-        // {
-        //     ResetHealth();
-        // }
+        private Animator _animator;
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         // for test function with keyboard
         private void Update()
@@ -35,8 +37,7 @@ namespace Madicine.Scene.Gameplay.Enemy
 
             if (health == 0)
             {
-                // call event trigger enemy death
-                GetComponent<EnemyEvents>().EnemyDeath(health, this);
+                _animator.SetTrigger("Die");
 
                 // drop virus genome
                 Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
@@ -67,6 +68,12 @@ namespace Madicine.Scene.Gameplay.Enemy
             return _enemyData;
         }
 
-        
+        // for event animation
+        void EnemyTransitionToTrunksman()
+        {
+            // call event trigger enemy death
+            GetComponent<EnemyEvents>().EnemyTransition(health, this);
+        }
+
     }
 }

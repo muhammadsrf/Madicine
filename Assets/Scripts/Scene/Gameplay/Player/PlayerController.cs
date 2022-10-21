@@ -65,7 +65,6 @@ namespace Madicine.Scene.Gameplay.Player
         private void OnDie(int health)
         {
             _aimOn = false;
-            Debug.Log("death");
             animator.SetBool("death", true);
         }
 

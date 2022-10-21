@@ -1,5 +1,7 @@
 using Madicine.Global.EnemyData;
 using UnityEngine;
+using System.Collections;
+using Madicine.Global.Vfx;
 
 namespace Madicine.Scene.Gameplay.Enemy
 {
@@ -10,11 +12,21 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private GameObject _virusGenome;
 
         private Animator _animator;
+        private Collider _colliderenemy;
         private bool _healthNull;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _colliderenemy = GetComponent<Collider>();
+        }
+
+        // for test function with keyboard
+        private void Update()
+        {
+            if (!_colliderenemy.enabled){
+                StartCoroutine(DelayEnableColider());
+            }
         }
 
         public int SubtractHealth(int subtract)
@@ -32,9 +44,13 @@ namespace Madicine.Scene.Gameplay.Enemy
                 _healthNull = true;
                 EnemyEvents.EnemyGetDown(health, this);
 
+                //disable collider enemy
+                _colliderenemy.enabled = !_colliderenemy.enabled;
+
                 // drop virus genome
                 Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
             }
+            VisualEffectController.Instance.SpawnVFX(VisualEffectEnum.HitEnemy, this.transform);
             return health;
         }
 
@@ -68,6 +84,14 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             // call event trigger enemy death
             GetComponent<EnemyEvents>().EnemyTransition(health, this);
+        }
+
+        IEnumerator DelayEnableColider(){
+            yield return new WaitForSeconds(0.5f);
+            if (!_colliderenemy.enabled){
+                ResetHealth();
+            }
+            _colliderenemy.enabled = !_colliderenemy.enabled;
         }
 
     }

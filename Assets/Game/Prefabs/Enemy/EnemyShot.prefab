@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayShotProjectile: 3
+  _areaDistance: 10
 --- !u!114 &341482415986709836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061eabb039e31a74d86e896562fd1a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistanceArea: 5
+  _attackDistanceArea: 10
   _speedFraction: 0.2
   _areaChase: {fileID: 3990551045861714732}
 --- !u!1001 &6156697095339008964

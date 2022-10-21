@@ -7,6 +7,7 @@ namespace Madicine.Scene.Gameplay.Enemy
     public class EnemyShotAttack : MonoBehaviour, IAction
     {
         [SerializeField] private float _delayShotProjectile = 3.0f;
+        [SerializeField] private float _areaDistance;
 
         private bool _isAttack;
         private float _timeSinceShot;
@@ -24,9 +25,9 @@ namespace Madicine.Scene.Gameplay.Enemy
             _timeSinceShot += Time.deltaTime;
         }
 
-        public void StartAttack(GameObject player)
+        public void StartAttack(GameObject player, float distanceToPlayer)
         {
-            if (_timeSinceShot > _delayShotProjectile)
+            if (_timeSinceShot > _delayShotProjectile && distanceToPlayer < _areaDistance)
             {
                 _animator.SetTrigger("attack");
                 GetComponent<ActionEnemyScheduler>().StartAction(this);

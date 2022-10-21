@@ -6,7 +6,7 @@ namespace Madicine.Scene.Gameplay.Enemy
 {
     public class EnemyAIShot : MonoBehaviour
     {
-        [SerializeField] private float _attackDistanceArea = 5f;
+        [SerializeField] private float _attackDistanceArea = 25f;
         [Range(0, 1)]
         [SerializeField] private float _speedFraction = 0.2f;
         [SerializeField] private Transform _areaChase;
@@ -61,7 +61,7 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             if (_enemyDeath) { return; }
 
-            _enemyAttack.StartAttack(_player);
+            _enemyAttack.StartAttack(_player, CheckDistanceToPlayer());
 
             if (_enemyAttack.IsAttack())
             {

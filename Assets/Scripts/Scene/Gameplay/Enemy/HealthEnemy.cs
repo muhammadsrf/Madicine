@@ -9,10 +9,10 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private AttributeEnemyData _enemyData;
         [SerializeField] private GameObject _virusGenome;
 
-        private void OnEnable()
-        {
-            ResetHealth();
-        }
+        // private void OnEnable()
+        // {
+        //     ResetHealth();
+        // }
 
         // for test function with keyboard
         private void Update()
@@ -53,9 +53,20 @@ namespace Madicine.Scene.Gameplay.Enemy
             return health;
         }
 
+        public int ResetHealth(int newHealth)
+        {
+            health = newHealth;
+
+            GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
+
+            return health;
+        }
+
         public AttributeEnemyData GetEnemyData()
         {
             return _enemyData;
         }
+
+        
     }
 }

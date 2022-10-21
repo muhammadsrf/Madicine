@@ -1,48 +1,36 @@
-using Madicine.Global.EnemyData;
 using UnityEngine;
+using Madicine.Global.EnemyData;
 
 namespace Madicine.Scene.Gameplay.Enemy
 {
-    public class EnemyAttack : MonoBehaviour, IAction
+    public class EnemyShotAttack : MonoBehaviour, IAction
     {
         [SerializeField] private float _delayShotProjectile = 3.0f;
-        [SerializeField] private float _delayAreaDamage = 3.0f;
 
+        private bool _isAttack;
         private float _timeSinceShot;
-        private float _timeSinceArea;
         private AttributeEnemyData _enemyData;
+        private Animator _animator;
 
         private void Awake()
         {
             _enemyData = GetComponent<HealthEnemy>().GetEnemyData();
+            _animator = GetComponent<Animator>();
         }
 
         private void Update()
         {
-            _timeSinceArea += Time.deltaTime;
             _timeSinceShot += Time.deltaTime;
         }
 
         public void StartAttack(GameObject player)
         {
-            if (_timeSinceArea > _delayAreaDamage)
-            {
-                AreaAttack(player);
-                _timeSinceArea = 0;
-            }
-
             if (_timeSinceShot > _delayShotProjectile)
             {
-                ShotProjectile();
+                _animator.SetTrigger("attack");
+                GetComponent<ActionEnemyScheduler>().StartAction(this);
+                _isAttack = true;
                 _timeSinceShot = 0;
-            }
-        }
-
-        public void AreaAttack(GameObject player)
-        {
-            if (_enemyData.typeEnemy == EnemyClass.EnemyArea)
-            {
-                Debug.Log("Give Damage to " + player.name + "!");
             }
         }
 
@@ -53,13 +41,19 @@ namespace Madicine.Scene.Gameplay.Enemy
                 if (ShotProjectileManajer.instance)
                 {
                     ShotProjectileManajer.instance.Shot(transform.position);
+                    _isAttack = false;
                 }
             }
         }
 
         public void Cancel()
         {
+            _isAttack = false;
+        }
 
+        public bool IsAttack()
+        {
+            return _isAttack;
         }
     }
 }

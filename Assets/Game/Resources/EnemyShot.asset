@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemyShot
   m_EditorClassIdentifier: 
   typeEnemy: 0
-  _healthMax: 100
+  _healthMax: 10
   _damage: 1

@@ -230,7 +230,7 @@ namespace Madicine.Scene.Gameplay.Player
         public void UpgradeHealthLevel()
         {
             _model.level += 1;
-            _model.health = _upgradeRefData.GetHpReference(_model.level - 1);
+            _model.health = _upgradeRefData.GetHpReference(_model.level); 
             _dataplayerSO.health = _model.health;
             PlayerEvents.UpgradeChange(_model.health);
         }

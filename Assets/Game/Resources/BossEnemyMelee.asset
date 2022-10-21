@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e2cbf0bd8ea0c746bca91b61b53b159, type: 3}
-  m_Name: EnemyArea
+  m_Name: BossEnemyMelee
   m_EditorClassIdentifier: 
-  typeEnemy: 1
-  _healthMax: 10
-  _damage: 1
+  typeEnemy: 0
+  _healthMax: 30
+  _damage: 2

@@ -539,6 +539,18 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2727863375848434249, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -599,6 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossArea
       objectReference: {fileID: 0}
+    - target: {fileID: 2727863376267061634, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: _maxSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2727863376267061636, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -612,9 +628,13 @@ PrefabInstance:
       value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: _enemyData
       value: 
-      objectReference: {fileID: 11400000, guid: 06688e6f68513fa428597abb21824c53, type: 2}
+      objectReference: {fileID: 11400000, guid: c67b60501e7f8ff44ac452b68643e005, type: 2}
     - target: {fileID: 5108660101974445456, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -657,9 +677,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _areaChase: {fileID: 985123509222707255}
-  _areaDistance: 10
+  _areaDistance: 15
   _delayAreaDamage: 1
-  _damage: 10
+  _damage: 15
 --- !u!114 &7758048482411309369
 MonoBehaviour:
   m_ObjectHideFlags: 0

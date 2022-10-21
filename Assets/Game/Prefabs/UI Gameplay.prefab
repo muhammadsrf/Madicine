@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1006862911767904134}
   - component: {fileID: 2087149458276650498}
   m_Layer: 5
-  m_Name: Health Number
+  m_Name: saving number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4607249515940333785}
   - component: {fileID: 2936353055591760665}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: wave-text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,8 +168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000076293945}
-  m_SizeDelta: {x: 1032.4666, y: 405.8636}
+  m_AnchoredPosition: {x: 0, y: 27.0075}
+  m_SizeDelta: {x: 1032.4666, y: 351.8486}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4607249515940333785
 CanvasRenderer:
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WAVE INFORMATION
+  m_text: wave 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fde4c5bd750d75b44a774cbb42606d5e, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 3d4872516ff323e47b93ceb9f6c1c610, type: 2}
@@ -208,15 +208,15 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+    rgba: 4284791807
+  m_fontColor: {r: 1, g: 0.73346144, b: 0.39215684, a: 1}
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0, b: 0.23529434, a: 1}
+    topRight: {r: 0.9622642, g: 0, b: 0, a: 1}
+    bottomLeft: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+    bottomRight: {r: 0.3490566, g: 0.08067818, b: 0.174859, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -226,12 +226,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 196.22
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 196.22
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 6019479011426823039}
   - component: {fileID: 6390367173143643147}
   m_Layer: 5
-  m_Name: 'Health Lvl :'
+  m_Name: saving
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,7 +418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &594138454718890020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -463,14 +463,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7701204579901384948}
-  - component: {fileID: 1765516005316883465}
+  - component: {fileID: 802534470969782216}
+  - component: {fileID: 9215388834781160169}
+  - component: {fileID: 100692936473708545}
   m_Layer: 5
   m_Name: wave-screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7701204579901384948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -491,7 +493,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1765516005316883465
+--- !u!225 &802534470969782216
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561177009189516177}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &9215388834781160169
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -501,7 +515,7 @@ Animator:
   m_GameObject: {fileID: 5561177009189516177}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c224ffbc261d0d4499d1717acd1a5815, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -510,6 +524,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &100692936473708545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561177009189516177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a99e50469008b4c89083cd2b053a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMesh: {fileID: 2936353055591760665}
+  _animator: {fileID: 9215388834781160169}
 --- !u!1 &7817139049827592452
 GameObject:
   m_ObjectHideFlags: 0

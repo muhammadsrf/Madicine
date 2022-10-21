@@ -106,6 +106,18 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727863375848434248, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 27.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2727863375848434249, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -186,6 +198,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.6
       objectReference: {fileID: 0}
+    - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: _trunksMan
+      value: 
+      objectReference: {fileID: 3052703692886295229, guid: 5c11fa8597296d04b8e551f26571a4ad, type: 3}
     m_RemovedComponents:
     - {fileID: 6662455693130935619, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
     - {fileID: 4990548919154949812, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
@@ -224,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayShotProjectile: 3
+  _areaDistance: 15
 --- !u!114 &341482415986709836
 MonoBehaviour:
   m_ObjectHideFlags: 0

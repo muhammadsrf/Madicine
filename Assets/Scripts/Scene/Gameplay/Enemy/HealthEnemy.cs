@@ -1,5 +1,6 @@
 using Madicine.Global.EnemyData;
 using UnityEngine;
+using ToolBox.Pools;
 using System.Collections;
 using Madicine.Global.Vfx;
 
@@ -10,10 +11,10 @@ namespace Madicine.Scene.Gameplay.Enemy
         public int health;
         [SerializeField] private AttributeEnemyData _enemyData;
         [SerializeField] private GameObject _virusGenome;
+        [SerializeField] private GameObject _trunksMan;
 
         private Animator _animator;
         private Collider _colliderenemy;
-        private bool _healthNull;
 
         private void Awake()
         {
@@ -21,18 +22,16 @@ namespace Madicine.Scene.Gameplay.Enemy
             _colliderenemy = GetComponent<Collider>();
         }
 
-        // for test function with keyboard
-        private void Update()
+        private void OnEnable()
         {
-            if (!_colliderenemy.enabled){
-                StartCoroutine(DelayEnableColider());
+            if (!_colliderenemy.enabled)
+            {
+                _colliderenemy.enabled = true;
             }
         }
 
         public int SubtractHealth(int subtract)
         {
-            if (_healthNull) { return 0; }
-
             health = Mathf.Max(0, health - subtract);
 
             // call event trigger enemy get attack / enemy hurt
@@ -41,7 +40,6 @@ namespace Madicine.Scene.Gameplay.Enemy
             if (health == 0)
             {
                 _animator.SetTrigger("Die");
-                _healthNull = true;
                 EnemyEvents.EnemyGetDown(health, this);
 
                 //disable collider enemy
@@ -57,7 +55,6 @@ namespace Madicine.Scene.Gameplay.Enemy
         public int ResetHealth()
         {
             health = _enemyData.GetHealthMax();
-            _healthNull = false;
 
             // GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
 
@@ -67,8 +64,6 @@ namespace Madicine.Scene.Gameplay.Enemy
         public int ResetHealth(int newHealth)
         {
             health = newHealth;
-            _healthNull = false;
-
             GetComponent<EnemyEvents>().EnemyGetAttack(health, this);
 
             return health;
@@ -84,15 +79,28 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             // call event trigger enemy death
             GetComponent<EnemyEvents>().EnemyTransition(health, this);
+
+            Vector3 trunksPosition = new Vector3(transform.position.x, 0, transform.position.z);
+
+            transform.localPosition = Vector3.zero;
+            transform.parent.position = Vector3.zero;
+            transform.parent.GetChild(1).position = new Vector3(0, 0.16f, 0);
+
+            transform.parent.gameObject.Release();
+
+            // spawn orang sehat
+            GameObject orangSehat = Instantiate(_trunksMan, trunksPosition, Quaternion.identity);
+            EnemyEvents.Cured();
         }
 
-        IEnumerator DelayEnableColider(){
+        IEnumerator DelayEnableColider()
+        {
             yield return new WaitForSeconds(0.5f);
-            if (!_colliderenemy.enabled){
+            if (!_colliderenemy.enabled)
+            {
                 ResetHealth();
             }
             _colliderenemy.enabled = !_colliderenemy.enabled;
         }
-
     }
 }

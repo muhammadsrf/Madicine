@@ -12,7 +12,7 @@ namespace Madicine.Global.Vfx
 
         public GameObject FindVFX(VisualEffectEnum vfx){
             VFXObject objvfx = new VFXObject();
-            GameObject obj = new GameObject();
+            GameObject obj;
             objvfx = effect.Find( v => v.nama == vfx);
             return obj = objvfx.obnjectVFX;
         }

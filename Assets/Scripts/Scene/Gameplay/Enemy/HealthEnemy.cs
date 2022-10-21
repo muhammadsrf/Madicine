@@ -11,10 +11,12 @@ namespace Madicine.Scene.Gameplay.Enemy
         [SerializeField] private GameObject _virusGenome;
 
         private Animator _animator;
+        private Collider _colliderenemy;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _colliderenemy = GetComponent<Collider>();
         }
 
         // for test function with keyboard
@@ -39,6 +41,9 @@ namespace Madicine.Scene.Gameplay.Enemy
             if (health == 0)
             {
                 _animator.SetTrigger("Die");
+
+                //disable collider enemy
+                _colliderenemy.enabled = !_colliderenemy.enabled;
 
                 // drop virus genome
                 Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);

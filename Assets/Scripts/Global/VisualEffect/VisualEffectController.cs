@@ -26,11 +26,20 @@ namespace Madicine.Global.Vfx
                 case VisualEffectEnum.Spray:
                     spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.Spray);
                     break;
-                case VisualEffectEnum.Enemy:
-                    spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.Enemy);
-                    break;
                 case VisualEffectEnum.Inject:
                     spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.Inject);
+                    break;
+                case VisualEffectEnum.HitEnemy:
+                    spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.HitEnemy);
+                    break;
+                case VisualEffectEnum.EnemyHeal:
+                    spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.EnemyHeal);
+                    break;
+                case VisualEffectEnum.EnemyDisappear:
+                    spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.EnemyDisappear);
+                    break;
+                case VisualEffectEnum.EnemyShoot:
+                    spawnObject = resourceListVFX.FindVFX(VisualEffectEnum.EnemyShoot);
                     break;
                 default:
                     break;

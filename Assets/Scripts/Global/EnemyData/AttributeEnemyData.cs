@@ -11,6 +11,11 @@ namespace Madicine.Global.EnemyData
         [Range(1, 100)]
         public int _damage = 1;
 
+        public void SetHealthMax(int max)
+        {
+            _healthMax = max;
+        }
+        
         public int GetHealthMax()
         {
             return _healthMax;

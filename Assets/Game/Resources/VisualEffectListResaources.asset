@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effect:
   - nama: 0
-    obnjectVFX: {fileID: 100018, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+    obnjectVFX: {fileID: 0}
   - nama: 1
-    obnjectVFX: {fileID: 8394315904679905085, guid: 3c5ca823e4bfa1644ad89e6ec594952b, type: 3}
+    obnjectVFX: {fileID: 0}
   - nama: 2
-    obnjectVFX: {fileID: 133518, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+    obnjectVFX: {fileID: 0}

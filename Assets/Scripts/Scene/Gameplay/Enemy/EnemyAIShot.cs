@@ -21,13 +21,13 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             _enemyDeath = false;
             // listening to event death enemy
-            EnemyEvents.onEnemyTransition += this.EnemyDeath;
+            EnemyEvents.onEnemyFall += this.EnemyDeath;
         }
 
         private void OnDisable()
         {
             // cancel listening to event death enemy
-            EnemyEvents.onEnemyTransition -= this.EnemyDeath;
+            EnemyEvents.onEnemyFall -= this.EnemyDeath;
         }
 
         private void EnemyDeath(int hp, HealthEnemy healthEnemy)

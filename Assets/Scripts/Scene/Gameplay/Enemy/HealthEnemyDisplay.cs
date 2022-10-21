@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +15,22 @@ namespace Madicine.Scene.Gameplay.Enemy
         private void OnEnable()
         {
             EnemyEvents.onEnemyHurt += SetHealthDisplay;
+            EnemyEvents.onEnemyFall += HideDisplay;
+
+            // _healthEnemy.
+        }
+
+        private void HideDisplay(int health, HealthEnemy healthScript)
+        {
+            if (_healthEnemy != healthScript) { return; }
+
+            _healthBarFiller.gameObject.SetActive(false);
         }
 
         private void OnDisable()
         {
             EnemyEvents.onEnemyHurt -= SetHealthDisplay;
+            EnemyEvents.onEnemyFall -= HideDisplay;
         }
 
         private void Awake()
@@ -44,6 +56,12 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void SetHealthDisplay(int health, HealthEnemy healthScript)
         {
+            // activate display healthbar
+            if (!_healthBarFiller.gameObject.activeSelf)
+            {
+                _healthBarFiller.gameObject.SetActive(true);
+            }
+
             // ignoring event if call event is not from this Enemy health object
             if (healthScript != _healthEnemy) { return; }
 

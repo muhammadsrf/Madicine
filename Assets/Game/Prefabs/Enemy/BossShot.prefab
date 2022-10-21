@@ -203,6 +203,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
+      propertyPath: _enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: a1218739896e5744b9e76c0420482083, type: 2}
+    - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: _trunksMan
       value: 
       objectReference: {fileID: 3052703692886295229, guid: 5c11fa8597296d04b8e551f26571a4ad, type: 3}

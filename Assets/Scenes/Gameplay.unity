@@ -603,6 +603,8 @@ GameObject:
   - component: {fileID: 1013483212}
   - component: {fileID: 1013483211}
   - component: {fileID: 1013483210}
+  - component: {fileID: 1013483208}
+  - component: {fileID: 1013483209}
   m_Layer: 0
   m_Name: EnemySpawnManager
   m_TagString: Untagged
@@ -610,6 +612,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1013483208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013483207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ae663f45a930f4983bc0c99f2011c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSpawn: 0
+  _data: {fileID: 11400000, guid: 9b565716ccd40da4caa2c1696256c90b, type: 2}
+  _prefab: {fileID: 7107965676847923351, guid: 525f2040be9395a49be9459097410c90, type: 3}
+  _amountToPool: 1
+  _position: {fileID: 249040235}
+--- !u!114 &1013483209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013483207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084788d31e3f1374c8f4bb72532abed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSpawn: 0
+  _data: {fileID: 11400000, guid: 8ee8a933ca2250e449b76d6be64a2402, type: 2}
+  _prefab: {fileID: 6372035520734509964, guid: e03f145ac5734414780832e279b4c675, type: 3}
+  _amountToPool: 1
+  _position: {fileID: 471776186}
 --- !u!114 &1013483210
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -634,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 3023938032175463402, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: _enemyData
       value: 
-      objectReference: {fileID: 11400000, guid: 06688e6f68513fa428597abb21824c53, type: 2}
+      objectReference: {fileID: 11400000, guid: c67b60501e7f8ff44ac452b68643e005, type: 2}
     - target: {fileID: 5108660101974445456, guid: 12a5de10a9ade1b43a24c289d51dac71, type: 3}
       propertyPath: m_Color.a
       value: 1

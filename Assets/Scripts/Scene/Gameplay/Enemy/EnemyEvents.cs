@@ -6,9 +6,11 @@ namespace Madicine.Scene.Gameplay.Enemy
     {
         // delegate name for event combat stats
         public delegate void EnemyCombatStats(int health, HealthEnemy healthScript);
+        public delegate void EnemyCured();
         // event name for delegate enemy
         public static event EnemyCombatStats onEnemyHurt;
-        public static event EnemyCombatStats onEnemyDeath;
+        public static event EnemyCombatStats onEnemyTransition;
+        public static event EnemyCured onEnemyCured;
 
         public void EnemyGetAttack(int health, HealthEnemy healthScript)
         {
@@ -18,12 +20,17 @@ namespace Madicine.Scene.Gameplay.Enemy
             }
         }
 
-        public void EnemyDeath(int health, HealthEnemy healthScript)
+        public void EnemyTransition(int health, HealthEnemy healthScript)
         {
-            if (onEnemyDeath != null)
+            if (onEnemyTransition != null)
             {
-                onEnemyDeath(health, healthScript);
+                onEnemyTransition(health, healthScript);
             }
+        }
+
+        public static void Cured()
+        {
+            onEnemyCured();
         }
     }
 }

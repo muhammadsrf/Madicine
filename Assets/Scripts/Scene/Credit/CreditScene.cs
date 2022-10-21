@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class CreditScene : MonoBehaviour
+namespace Madicine.Scene.Credit
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CreditScene : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Button _backBtn;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            _backBtn.onClick.AddListener(Back);
+        }
+
+        private void Back()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

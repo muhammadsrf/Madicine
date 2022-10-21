@@ -1,5 +1,6 @@
 using Madicine.Global.EnemyData;
 using UnityEngine;
+using Madicine.Global.Vfx;
 
 namespace Madicine.Scene.Gameplay.Enemy
 {
@@ -42,6 +43,7 @@ namespace Madicine.Scene.Gameplay.Enemy
                 // drop virus genome
                 Instantiate(_virusGenome, new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
             }
+            VisualEffectController.Instance.SpawnVFX(VisualEffectEnum.HitEnemy, this.transform);
             return health;
         }
 

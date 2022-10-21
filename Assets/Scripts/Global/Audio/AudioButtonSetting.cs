@@ -78,6 +78,7 @@ namespace Madicine.Global.Audio
             else
             {
                 _bgmControl.GetComponent<RectTransform>().anchoredPosition = _onPos;
+                _bgmControl.GetComponent<Transform>().localScale = new Vector3(-1, 1, 1);
             }
 
         }
@@ -95,6 +96,7 @@ namespace Madicine.Global.Audio
             else
             {
                 _soundControl.GetComponent<RectTransform>().anchoredPosition = _onPos;
+                _soundControl.GetComponent<Transform>().localScale = new Vector3(-1, 1, 1);
             }
         }
 

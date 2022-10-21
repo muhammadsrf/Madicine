@@ -1,5 +1,6 @@
 using Madicine.Global.EnemyData;
 using UnityEngine;
+using System.Collections;
 using Madicine.Global.Vfx;
 
 namespace Madicine.Scene.Gameplay.Enemy
@@ -22,13 +23,9 @@ namespace Madicine.Scene.Gameplay.Enemy
         // for test function with keyboard
         private void Update()
         {
-            // if (Input.GetKeyDown(KeyCode.K))
-            // {
-            //     if (SubtractHealth(10) == 0)
-            //     {
-            //         Debug.Log("Mati!");
-            //     }
-            // }
+            if (!_colliderenemy.enabled){
+                StartCoroutine(DelayEnableColider());
+            }
         }
 
         public int SubtractHealth(int subtract)
@@ -80,6 +77,14 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             // call event trigger enemy death
             GetComponent<EnemyEvents>().EnemyTransition(health, this);
+        }
+
+        IEnumerator DelayEnableColider(){
+            yield return new WaitForSeconds(0.5f);
+            if (!_colliderenemy.enabled){
+                ResetHealth();
+            }
+            _colliderenemy.enabled = !_colliderenemy.enabled;
         }
 
     }

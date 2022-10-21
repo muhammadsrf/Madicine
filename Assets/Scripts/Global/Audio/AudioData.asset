@@ -30,9 +30,9 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 552ba8272cfd945489afbc61d429559f, type: 3}
     Volume: 1
     isLoop: 0
-  - SoundName: 
-    Clip: {fileID: 0}
-    Volume: 0
+  - SoundName: OnChoose
+    Clip: {fileID: 8300000, guid: d798aeb2e5726a3459b7b0d99fa9e355, type: 3}
+    Volume: 1
     isLoop: 0
   - SoundName: 
     Clip: {fileID: 0}

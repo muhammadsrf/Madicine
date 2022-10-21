@@ -57,7 +57,7 @@ namespace Madicine.Scene.Gameplay.UI
         }
 
         IEnumerator delay(){
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
             _gameOverScreen.SetActive(true);
 
             Time.timeScale = 0;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Madicine.Scene.Gameplay
 {
@@ -12,6 +13,11 @@ namespace Madicine.Scene.Gameplay
         private void Start()
         {
             OnGameplay();
+        }
+
+        public void Exit()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

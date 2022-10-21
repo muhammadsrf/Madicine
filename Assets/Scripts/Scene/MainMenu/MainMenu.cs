@@ -31,7 +31,7 @@ namespace Madicine.Scene.MainMenu
 
         private void Play()
         {
-            SceneManager.LoadScene("SelectCharacter");
+            SceneManager.LoadScene("Gameplay");
         }
 
         private void SettingPopup()

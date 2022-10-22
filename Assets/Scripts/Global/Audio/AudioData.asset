@@ -34,7 +34,15 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: d798aeb2e5726a3459b7b0d99fa9e355, type: 3}
     Volume: 1
     isLoop: 0
-  - SoundName: 
-    Clip: {fileID: 0}
-    Volume: 0
+  - SoundName: OnLevelUp
+    Clip: {fileID: 8300000, guid: 93e075db6cab57c4cbac2bb49ff8b8fe, type: 3}
+    Volume: 1
+    isLoop: 0
+  - SoundName: OnLose
+    Clip: {fileID: 8300000, guid: 9faffcd6415bc6b429192ff0462ee60c, type: 3}
+    Volume: 1
+    isLoop: 0
+  - SoundName: OnVictory
+    Clip: {fileID: 8300000, guid: b85bf71d84ac5a74481071ac5f45a89e, type: 3}
+    Volume: 1
     isLoop: 0

@@ -264,6 +264,18 @@ MonoBehaviour:
   _attackDistanceArea: 5
   _speedFraction: 0.2
   _areaChase: {fileID: 3990551045861714732}
+--- !u!114 &8603667601900461546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107965676507868410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f2830d7f70fb4439f6d29867cd2919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6156697095339008964
 PrefabInstance:
   m_ObjectHideFlags: 0

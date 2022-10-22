@@ -242,6 +242,8 @@ namespace Madicine.Scene.Gameplay.Player
         {
             _model.weaponLevel += 1;
             _weaponController.TemporaryDamageAtk = _upgradeRefData.GetAtkReference(_model.weaponLevel);
+            _model.health = _upgradeRefData.GetHpReference(_model.level);
+            _dataplayerSO.health = _model.health;
             PlayerEvents.UpgradeChange(_model.health);
         }
 

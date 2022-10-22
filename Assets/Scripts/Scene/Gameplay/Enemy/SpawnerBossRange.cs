@@ -22,17 +22,15 @@ namespace Madicine.Scene.Gameplay.Enemy
 
         private void Update()
         {
-            if (_waveController.freezeTimer)
+            if (!_waveController.freezeTimer)
             {
-                return;
-            }
+                CheckDatabase();
 
-            CheckDatabase();
-
-            if (canSpawn)
-            {
-                Spawn();
-                _waveController.freezeTimer = true;
+                if (canSpawn)
+                {
+                    Spawn();
+                    _waveController.freezeTimer = true;
+                }
             }
         }
 
@@ -40,9 +38,10 @@ namespace Madicine.Scene.Gameplay.Enemy
         {
             foreach (var item in _data.waveAndDelay)
             {
-                if (item.wave == _waveController.currentWave)
+                if (item.wave == _waveController.currentWave && item.wave != _tempWaveNumber)
                 {
                     canSpawn = true;
+                    _tempWaveNumber = item.wave;
                     return;
                 }
             }
@@ -56,7 +55,7 @@ namespace Madicine.Scene.Gameplay.Enemy
             GameObject _enemySpawn = _prefab.Reuse(newPosition, Quaternion.identity);
             _enemySpawn.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
             _enemySpawn.transform.GetChild(1).localPosition = new Vector3(0, 1.6f, 0);
-            _enemySpawn.GetComponentInChildren<HealthEnemy>().ResetHealth(10);
+            _enemySpawn.GetComponentInChildren<HealthEnemy>().ResetHealth(30);
         }
 
         public void DestroyAll()

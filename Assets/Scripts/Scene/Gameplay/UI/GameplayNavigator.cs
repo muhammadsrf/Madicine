@@ -56,7 +56,8 @@ namespace Madicine.Scene.Gameplay.UI
             StartCoroutine(delay());
         }
 
-        IEnumerator delay(){
+        IEnumerator delay()
+        {
             yield return new WaitForSeconds(0.7f);
             _gameOverScreen.SetActive(true);
 
@@ -76,6 +77,12 @@ namespace Madicine.Scene.Gameplay.UI
                 // resume the gameplay
                 Time.timeScale = 1;
             }
+        }
+
+        public void Home()
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadSceneAsync("MainMenu");
         }
     }
 }

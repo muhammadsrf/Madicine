@@ -15,9 +15,3 @@ MonoBehaviour:
   Characters:
   - Character_Id: 0
     Character_Name: Character 1
-  - Character_Id: 1
-    Character_Name: Character 2
-  - Character_Id: 2
-    Character_Name: Character 3
-  - Character_Id: 3
-    Character_Name: Character 4

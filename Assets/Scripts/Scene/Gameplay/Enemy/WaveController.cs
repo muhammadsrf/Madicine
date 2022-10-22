@@ -32,12 +32,12 @@ namespace Madicine.Scene.Gameplay.Enemy
                     ShowWaveText();
                     _timer = 0;
 
-                    // for wave boss
-                    if (currentWave == 3 || currentWave == 6 || currentWave == 9 || currentWave == 10)
-                    {
-                        freezeTimer = true;
-                        _timer = 55;
-                    }
+                    // // for wave boss
+                    // if (currentWave == 3 || currentWave == 6 || currentWave == 9 || currentWave == 10)
+                    // {
+                    //     freezeTimer = true;
+                    //     _timer = 55;
+                    // }
                 }
 
                 if (currentWave > 10)

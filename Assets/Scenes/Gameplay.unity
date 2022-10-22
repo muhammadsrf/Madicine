@@ -619,7 +619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013483207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40ae663f45a930f4983bc0c99f2011c8, type: 3}
   m_Name: 
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013483207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 084788d31e3f1374c8f4bb72532abed6, type: 3}
   m_Name: 
@@ -1838,10 +1838,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5561177009189516177, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7817139050297991834, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
       propertyPath: m_Name
       value: UI Gameplay
@@ -1928,6 +1924,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7817139050297991838, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817139051290166686, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817139051625621322, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817139051630608994, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 62dc5102be12246419411c822ecbb278, type: 3}
+    - target: {fileID: 7817139051630609020, guid: 16f116f407d3ab34588e52bb6d1061c6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

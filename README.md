@@ -41,9 +41,9 @@ And you can also download and install this from our store on :
 
 ⚡️ Herdin Nor S. (Programmer)
 
-⚡️ Fahsa Aula NH (Programmer)
+⚡️ Fahsa Aula N H (Programmer)
 
-⚡️ I Nyoman Krisna (Lead Artist)
+⚡️ I Nyoman K W (Lead Artist)
 
 ⚡️ Sahmi Difa A. (3D Artist)
 

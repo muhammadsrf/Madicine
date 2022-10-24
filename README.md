@@ -28,6 +28,31 @@ And you can also download and install this from our store on :
     
 ## Contributors
 - [@muhammadsrf](https://github.com/muhammadsrf)
-- [@herdi-nooor](https://github.com/herdi-nooor)
 - [@fahsaaulanh](https://github.com/fahsaaulanh)
+- [@herdi-nooor](https://github.com/herdi-nooor)
+
+
+## OUR TEAM
+![Main Menu](https://lh4.googleusercontent.com/6xterD9uVigOmh95aQ5hyRPHbEPCjBjykNgwAomAFCtzYXBKm8N3gdFUqsakOMP7LAw=w2400)
+
+⚡️ Akhyar (Game Production / Game Designer)
+
+⚡️ M Syarif H. (Lead Programmer)
+
+⚡️ Herdin Nor S. (Programmer)
+
+⚡️ Fahsa Aula NH (Programmer)
+
+⚡️ I Nyoman Krisna (Lead Artist)
+
+⚡️ Sahmi Difa A. (3D Artist)
+
+⚡️ Adrian M R. (2D / UI Artist)
+## Support
+Thank you to the entire Game Creation committee, including Kementerian Komunikasi dan Informasi (KOMINFO), Asosiasi Game Indonesia (AGI), and especially the DTS FGA Scholarship 2022 for the successful release of this game. 
+
+![supported by](https://lh3.googleusercontent.com/DtQvB8BxP_AXPi5dhlHSq3mm5CMuN1bxzDTGqqZrHoQw2v-iPsYLd7kVDxf4Afufb_Q=w2400)
+
+
+For support, email sariep.production@gmail.com or join our Slack channel.
 
